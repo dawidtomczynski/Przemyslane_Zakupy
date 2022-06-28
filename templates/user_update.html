@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block main %}
+    <h4 style="text-align: center">{{ msg }}</h4><br>
+    <form method="post" style="text-align: center">
+        {{ form.as_p }}
+        <p>* pola wymagane</p>
+        <input type="submit" value="Aktualizuj">
+        {% csrf_token %}
+    </form><br>
+    <div style="margin-left: auto; margin-right: auto; width: 13em">
+        <a href="/profile/update-password/"><button>Zmień hasło</button></a>
+        <a href="/profile/delete/" onclick="return confirm('Czy jesteś pewien, że chcesz usunąć swoje konto?');"><button>Usuń konto</button></a>
+    </div>
+{% endblock %}

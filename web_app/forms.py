@@ -28,3 +28,19 @@ class UserCreateForm(f.Form):
         user = User.objects.filter(username=username)
         if user:
             raise ValidationError('Użytkownik o podanej nazwie już istnieje')
+
+
+class UserUpdateForm(UserCreateForm):
+    password = None
+    password2 = None
+
+
+class UserUpdatePasswordForm(f.Form):
+    new_password = f.CharField(label='Wprowadź nowe hasło' ,widget=f.PasswordInput)
+    new_password2 = f.CharField(label='Ponownie wprowadź nowe hasło', widget=f.PasswordInput)
+
+    def clean(self):
+        cleaned_data = super().clean()
+        if cleaned_data.get('new_password') != cleaned_data.get('new_password2'):
+            raise ValidationError('Podane hasła nie są jednakowe')
+

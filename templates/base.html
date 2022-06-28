@@ -6,7 +6,7 @@
     <title>Przemyślane Zakupy</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
   </head>
-  <body>
+  <body style="min-height: 100vh; display: flex; flex-direction: column">
     <header class="p-3 mb-3 border-bottom">
     <div class="container">
       <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
@@ -24,7 +24,7 @@
         <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
           <input type="search" class="form-control" placeholder="Wyszukaj..." aria-label="Search">
         </form>
-      {% if not perms.web_app.add_plans %}
+      {% if not user.is_authenticated %}
         <div class="col-md-3 text-end">
             <a href="/login/"><button type="button" class="btn btn-outline-primary me-2">Logowanie</button></a>
             <a href="/register/"><button type="button" class="btn btn-primary">Rejestracja</button></a>
@@ -35,10 +35,13 @@
             <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
           </a>
           <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1" style="">
-            <li><a class="dropdown-item" href="#">New project...</a></li>
-            <li><a class="dropdown-item" href="#">Settings</a></li>
-            <li><a class="dropdown-item" href="#">Profile</a></li>
+              <li style="text-align: center"><b>{{ user.username }}</b></li>
             <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">Aktualny Plan</a></li>
+            <li><a class="dropdown-item" href="#">Moje Plany</a></li>
+            <li><a class="dropdown-item" href="#">Moje Dania</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="/profile/update/">Mój Profil</a></li>
             <li><a class="dropdown-item" href="/logout/">Wyloguj</a></li>
           </ul>
         </div>
@@ -100,10 +103,10 @@
   </div>
         {% endblock %}
     </main>
-    <footer class="footer mt-auto py-3 bg-light">
-        <p class="float-end"><a href="#">Back to top</a></p>
+    <footer class="footer mt-auto py-3 bg-light" style="margin-top: auto">
+        <p class="float-end"><a href="#"><button>Back to top</button></a></p>
   <div class="container">
-    <span class="text-muted">Place sticky footer content here.</span>
+    <span class="text-muted">made by dawidtomczynski</span>
   </div>
 </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>

@@ -27,5 +27,8 @@ urlpatterns = [
     path('login/', v.LoginView.as_view()),
     path('register/', v.UserCreateView.as_view()),
     path('logout/', v.LogoutView.as_view()),
+    path('profile/update/', v.UserUpdateView.as_view()),
+    path('profile/update-password/', v.UserUpdatePasswordView.as_view()),
+    path('profile/delete/', v.UserDeleteView.as_view()),
 
 ]
