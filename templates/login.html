@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block main %}
+    <h5 style="text-align: center">{{ msg }}</h5><br>
+    <form method="post" style="text-align: center">
+        {{ form.as_p }}
+        <input type="submit" value="Zaloguj">
+        {% csrf_token %}
+    </form>
+{% endblock %}

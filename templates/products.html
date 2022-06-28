@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block main %}
+    <ul>
+        {% for product in products %}
+            <li>{{ product.name }} {{ product.price }}</li>
+        {% endfor %}
+    </ul>
+    <div style="text-align:center">
+    <span>
+        {% if products.has_previous %}
+            <a href="?page={{ products.previous_page_number }}">< poprzednia</a>
+        {% endif %}
+        <span>
+                {% for page_number in products.paginator.page_range %}
+                    | <a href="/products/?page={{ page_number }}">{{ page_number }}</a>
+                {% endfor %} |
+        </span>
+        {% if products.has_next %}
+            <a href="?page={{ products.next_page_number }}">następna ></a>
+        {% endif %}
+        </span>
+    </div>
+{% endblock %}

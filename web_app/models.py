@@ -1,3 +1,55 @@
+from django.conf import settings
+from django.contrib.auth import get_user_model
+from django.contrib.auth.models import User
 from django.db import models
 
 # Create your models here.
+
+
+def get_sentinel_user():
+    return get_user_model().objects.get_or_create(username='deleted')[0]
+
+
+TYPES = (
+    (1, 'mięsny'),
+    (2, 'wegetariański'),
+    (3, 'wegański')
+)
+
+
+class Plans(models.Model):
+    name = models.CharField(max_length=64)
+    date_created = models.DateTimeField(auto_now_add=True)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET(get_sentinel_user))
+    meals = models.ManyToManyField('Meals')
+    type = models.IntegerField(choices=TYPES)
+
+
+class SelectedPlans(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    active_plan = models.ForeignKey(Plans, on_delete=models.CASCADE)
+
+
+class Meals(models.Model):
+    name = models.CharField(max_length=64)
+    date_created = models.DateTimeField(auto_now_add=True)
+    recipe = models.TextField()
+    type = models.IntegerField(choices=TYPES)
+    products = models.ManyToManyField('Products', through='MealsProducts')
+
+
+class Products(models.Model):
+    name = models.CharField(max_length=64)
+    price = models.DecimalField(max_digits=5, decimal_places=2)
+    kcal = models.IntegerField()
+    type = models.ManyToManyField('ProductType')
+
+
+class MealsProducts(models.Model):
+    meal_id = models.ForeignKey(Meals, on_delete=models.CASCADE)
+    product_id = models.ForeignKey(Products, on_delete=models.CASCADE)
+    grams = models.IntegerField()
+
+
+class ProductType(models.Model):
+    name = models.CharField(max_length=64)
