@@ -32,6 +32,6 @@ urlpatterns = [
     path('profile/delete/', v.UserDeleteView.as_view()),
     path('plans/add/', v.PlanAddView.as_view()),
     path('plans/<int:plan_id>/', v.PlanDetailsView.as_view()),
-    path('plans/edit/<int:plan_id>', v.PlanModifyView.as_view()),
-    path('plans/delete/<int:plan_id>', v.PlanDeleteView.as_view())
+    path('plans/edit/<int:plan_id>/', v.PlanModifyView.as_view()),
+    path('plans/delete/<int:plan_id>/', v.PlanDeleteView.as_view()),
 ]

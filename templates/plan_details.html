@@ -12,9 +12,8 @@
             {% endfor %}
         </ul>
         {% if user.is_authenticated and plan.user_id == user.id %}
-            <p><a href="/plans/add_meal/{{ plan.id }}"><button>Dodaj danie do planu</button></a></p>
-            <a href="/plans/edit/{{ plan.id }}"><button>Edytuj plan</button></a>
-            <a href="/plans/delete/{{ plan.id }}"><button>Usuń plan</button></a>
+            <a href="/plans/edit/{{ plan.id }}"><button type="button" class="btn btn-outline-primary me-2">Edytuj plan</button></a>
+            <a href="/plans/delete/{{ plan.id }}"><button type="button" class="btn btn-outline-primary me-2">Usuń plan</button></a>
         {% endif %}
     </div>
 {% endblock %}

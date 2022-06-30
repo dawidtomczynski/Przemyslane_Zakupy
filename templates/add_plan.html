@@ -3,8 +3,8 @@
     <div style="text-align: center">
     {% if not msg %}
         <form method="post">
+            <p><input type="submit" value="Zapisz plan"></p>
             {{ form.as_p }}
-            <input type="submit" value="Zapisz plan">
             {% csrf_token %}
         </form>
     {% else %}

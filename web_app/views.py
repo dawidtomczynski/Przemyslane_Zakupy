@@ -3,7 +3,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.mixins import PermissionRequiredMixin
 from django.contrib.auth.models import User, Group
 from django.core.paginator import Paginator
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render, redirect, get_object_or_404, get_list_or_404
 from django.views import View
 from web_app import models as m
 from web_app import forms as f
@@ -50,6 +50,7 @@ class PlanAddView(PermissionRequiredMixin, View):
                                   type=data.get('type'),
                                   persons=data.get('persons'))
             last_plan = m.Plan.objects.last()
+            last_plan.meal.set(data.get('meal'))
             return redirect(f"/plans/{last_plan.id}")
         return render(request, 'add_plan.html', {'form': form})
 
@@ -61,20 +62,29 @@ class PlanModifyView(PermissionRequiredMixin, View):
         plan = get_object_or_404(m.Plan, id=plan_id)
         user = request.user
         if user == plan.user:
-            form = f.PlanAddForm(initial={'name': plan.name, 'type': plan.type, 'persons': plan.persons})
+            meals_ids = list(plan.meal.values_list('id', flat=True))
+            form = f.PlanAddForm(initial={'name': plan.name, 'type': plan.type, 'persons': plan.persons, 'meal': meals_ids})
             return render(request, 'add_plan.html', {'form': form})
         else:
             msg = 'Nie możesz edytować czyjegoś planu.'
             return render(request, 'add_plan.html', {'msg': msg})
 
     def post(self, request, plan_id):
-        form = f.PlanAddForm(request.POST)
-        if form.is_valid():
-            data = form.cleaned_data
-            plan = m.Plan.objects.filter(id=plan_id)
-            plan.update(name=data.get('name'), type=data.get('type'), persons=data.get('persons'))
-            return redirect(f"/plans/{plan_id}")
-        return render(request, 'add_plan.html', {'form': form})
+        plan = get_object_or_404(m.Plan, id=plan_id)
+        user = request.user
+        if plan.user == user:
+            form = f.PlanAddForm(request.POST)
+            if form.is_valid():
+                data = form.cleaned_data
+                plan.name=data.get('name')
+                plan.type=data.get('type')
+                plan.persons=data.get('persons')
+                plan.meal.set(data.get('meal'))
+                return redirect(f"/plans/{plan_id}")
+            return render(request, 'add_plan.html', {'form': form})
+        else:
+            msg = 'Nie możesz edytować czyjegoś planu.'
+            return render(request, 'add_plan.html', {'msg': msg})
 
 
 class PlanDeleteView(PermissionRequiredMixin, View):
@@ -101,7 +111,6 @@ class PlanDeleteView(PermissionRequiredMixin, View):
         else:
             msg = 'Nie możesz usunąć czyjegoś planu.'
         return render(request, 'delete_plan.html', {'msg': msg})
-
 
 
 class MealListView(View):

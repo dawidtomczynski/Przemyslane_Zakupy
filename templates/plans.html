@@ -53,9 +53,11 @@
       <span class="carousel-control-next-icon" aria-hidden="true"></span>
       <span class="visually-hidden">Next</span>
     </button>
-  </div>
+  </div><br>
     <div style="text-align: center">
-        <br><p><a href="/plans/add/"><button>Dodaj nowy plan</button></a></p><br>
+    {% if user.is_authenticated %}
+        <br><p><a href="/plans/add/"><button type="button" class="btn btn-outline-primary me-2">Dodaj nowy plan</button></a></p><br>
+    {% endif %}
     <ul>
         {% for plan in plans %}
             <li><a href="/plans/{{ plan.id }}">{{ plan.name }}</a>, dla {{ plan.persons }} osób, koszt całkowity: {{ plan|plan_cost }} zł</li>

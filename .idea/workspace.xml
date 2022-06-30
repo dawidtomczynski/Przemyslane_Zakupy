@@ -5,19 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bc4aa7e6-afb6-4cd6-8f9e-fbc87764dd2a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/templates/add_plan.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/delete_plan.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/plan_details.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web_app/templatetags/kcal_count.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Przemyslane_Zakupy/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/Przemyslane_Zakupy/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/meals.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/meals.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/plan_details.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/plan_details.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/plans.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/plans.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/products.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/products.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web_app/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/web_app/admin.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web_app/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/web_app/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web_app/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/web_app/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web_app/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/web_app/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -107,7 +100,7 @@
       <updated>1656360270247</updated>
       <workItem from="1656360273743" duration="17650000" />
       <workItem from="1656414579891" duration="12534000" />
-      <workItem from="1656435756583" duration="21244000" />
+      <workItem from="1656435756583" duration="25497000" />
     </task>
     <servers />
   </component>
