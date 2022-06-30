@@ -21,13 +21,22 @@ class Plan(models.Model):
     name = models.CharField(max_length=64)
     date_created = models.DateTimeField(auto_now_add=True)
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET(get_sentinel_user))
-    meals = models.ManyToManyField('Meal')
+    meal = models.ManyToManyField('Meal', through='PlanMeal')
     type = models.IntegerField(choices=TYPES)
+    persons = models.IntegerField()
+
+    def __str__(self):
+        return self.name
 
 
 class SelectedPlan(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    user = models.ManyToManyField(User)
     active_plan = models.ForeignKey(Plan, on_delete=models.CASCADE)
+
+
+class PlanMeal(models.Model):
+    plan = models.ForeignKey(Plan, on_delete=models.CASCADE)
+    meal = models.ForeignKey('Meal', on_delete=models.CASCADE)
 
 
 class Meal(models.Model):
@@ -35,19 +44,25 @@ class Meal(models.Model):
     date_created = models.DateTimeField(auto_now_add=True)
     recipe = models.TextField()
     type = models.IntegerField(choices=TYPES)
-    products = models.ManyToManyField('Product', through='MealProduct')
+    product = models.ManyToManyField('Product', through='MealProduct')
+
+    def __str__(self):
+        return self.name
 
 
 class Product(models.Model):
     name = models.CharField(max_length=64)
     price = models.DecimalField(max_digits=5, decimal_places=2)
     kcal = models.IntegerField()
-    type = models.ManyToManyField('ProductType')
+    type = models.ForeignKey('ProductType', on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.name
 
 
 class MealProduct(models.Model):
-    meal_id = models.ForeignKey(Meal, on_delete=models.CASCADE)
-    product_id = models.ForeignKey(Product, on_delete=models.CASCADE)
+    meal = models.ForeignKey(Meal, on_delete=models.CASCADE)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
     grams = models.IntegerField()
 
 

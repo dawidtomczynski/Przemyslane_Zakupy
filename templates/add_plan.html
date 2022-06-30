@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block main %}
+    <div style="text-align: center">
+    {% if not msg %}
+        <form method="post">
+            {{ form.as_p }}
+            <input type="submit" value="Zapisz plan">
+            {% csrf_token %}
+        </form>
+    {% else %}
+        <h4>{{ msg }}</h4>
+    {% endif %}
+    </div>
+{% endblock %}

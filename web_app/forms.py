@@ -1,6 +1,14 @@
 from django import forms as f
 from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
+from web_app import models as m
+
+
+TYPES = (
+    (1, 'mięsny'),
+    (2, 'wegetariański'),
+    (3, 'wegański')
+)
 
 
 class LoginForm(f.Form):
@@ -44,3 +52,8 @@ class UserUpdatePasswordForm(f.Form):
         if cleaned_data.get('new_password') != cleaned_data.get('new_password2'):
             raise ValidationError('Podane hasła nie są jednakowe')
 
+
+class PlanAddForm(f.Form):
+    name = f.CharField(max_length=64, label='Nazwa planu')
+    type = f.ChoiceField(choices=TYPES, label='Typ planu')
+    persons = f.IntegerField(label='Dla ilu osób')

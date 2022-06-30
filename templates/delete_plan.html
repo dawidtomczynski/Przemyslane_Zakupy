@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block main %}
+    <div style="text-align:center">
+    {% if not msg %}
+    <h4>Czy na pewno chcesz usunąć plan: {{ plan.name }}?</h4><br>
+        <form method="post">
+            <input type="submit" name="answer" value="Tak">&emsp;
+            <input type="submit" name="answer" value="Nie">
+            {% csrf_token %}
+        </form>
+    {% else %}
+        <h4>{{ msg }}</h4>
+    {% endif %}
+    </div>
+{% endblock %}

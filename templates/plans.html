@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load kcal_count %}
 {% block main %}
     <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-indicators">
@@ -12,9 +13,10 @@
 
         <div class="container">
           <div class="carousel-caption text-start">
-            <h1>Example headline.</h1>
-            <p>Some representative placeholder content for the first slide of the carousel.</p>
-            <p><a class="btn btn-lg btn-primary" href="#">Sign up today</a></p>
+            {% if random_plans.1 %}
+            <p>Dla {{ random_plans.1.persons }} osób, koszt całkowity: {{ random_plans.1|plan_cost }}</p>
+            <p><a class="btn btn-lg btn-primary" href="/plans/{{ random_plans.1.id }}">{{ random_plans.1.name }}</a></p>
+            {% endif %}
           </div>
         </div>
       </div>
@@ -23,9 +25,10 @@
 
         <div class="container">
           <div class="carousel-caption">
-            <h1>Another example headline.</h1>
-            <p>Some representative placeholder content for the second slide of the carousel.</p>
-            <p><a class="btn btn-lg btn-primary" href="#">Learn more</a></p>
+            {% if random_plans.0 %}
+            <p>Dla {{ random_plans.0.persons }} osób, koszt całkowity: {{ random_plans.0|plan_cost }}</p>
+            <p><a class="btn btn-lg btn-primary" href="/plans/{{ random_plans.0.id }}">{{ random_plans.0.name }}</a></p>
+            {% endif %}
           </div>
         </div>
       </div>
@@ -34,9 +37,10 @@
 
         <div class="container">
           <div class="carousel-caption text-end">
-            <h1>One more for good measure.</h1>
-            <p>Some representative placeholder content for the third slide of this carousel.</p>
-            <p><a class="btn btn-lg btn-primary" href="#">Browse gallery</a></p>
+            {% if random_plans.2 %}
+            <p>Dla {{ random_plans.2.persons }} osób, koszt całkowity: {{ random_plans.2|plan_cost }}</p>
+            <p><a class="btn btn-lg btn-primary" href="/plans/{{ random_plans.2.id }}">{{ random_plans.2.name }}</a></p>
+            {% endif %}
           </div>
         </div>
       </div>
@@ -50,11 +54,14 @@
       <span class="visually-hidden">Next</span>
     </button>
   </div>
+    <div style="text-align: center">
+        <br><p><a href="/plans/add/"><button>Dodaj nowy plan</button></a></p><br>
     <ul>
         {% for plan in plans %}
-            <li>{{ plan.name }} {{ plan.date_created }}</li>
+            <li><a href="/plans/{{ plan.id }}">{{ plan.name }}</a>, dla {{ plan.persons }} osób, koszt całkowity: {{ plan|plan_cost }} zł</li>
         {% endfor %}
     </ul>
+    </div>
     <div style="text-align:center">
     <span>
         {% if plans.has_previous %}

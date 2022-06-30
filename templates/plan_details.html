@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load kcal_count %}
+{% block main %}
+    <div style="text-align:center">
+        <h3>{{ plan.name }}</h3>
+        <p>Dla {{ plan.persons }} osób</p>
+        <p>Całkowity koszt: <b>{{ plan|plan_cost }} zł</b></p>
+        <p>Dania w planie:</p>
+        <ul>
+            {% for meal in meals %}
+                <li><a href="/meals/{{ meal.id }}">{{ meal.name }}</a>, {{ meal|kcal_count }} kcal / 100g, waga około: {{ meal|weight_count }}g, koszt: {{ meal|price_count }} zł</li>
+            {% endfor %}
+        </ul>
+        {% if user.is_authenticated and plan.user_id == user.id %}
+            <p><a href="/plans/add_meal/{{ plan.id }}"><button>Dodaj danie do planu</button></a></p>
+            <a href="/plans/edit/{{ plan.id }}"><button>Edytuj plan</button></a>
+            <a href="/plans/delete/{{ plan.id }}"><button>Usuń plan</button></a>
+        {% endif %}
+    </div>
+{% endblock %}

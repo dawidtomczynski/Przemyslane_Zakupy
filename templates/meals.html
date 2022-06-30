@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load kcal_count %}
 {% block main %}
     <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-indicators">
@@ -12,9 +13,10 @@
 
         <div class="container">
           <div class="carousel-caption text-start">
-            <h1>Example headline.</h1>
-            <p>Some representative placeholder content for the first slide of the carousel.</p>
-            <p><a class="btn btn-lg btn-primary" href="#">Sign up today</a></p>
+            {% if random_meals.1 %}
+            <p>{{ random_meals.1|kcal_count }} kcal / 100g, koszt: {{ random_meals.1|price_count }} zł</p>
+            <p><a class="btn btn-lg btn-primary" href="/meals/{{ random_meals.1.id }}">{{ random_meals.1.name }}</a></p>
+            {% endif %}
           </div>
         </div>
       </div>
@@ -23,9 +25,10 @@
 
         <div class="container">
           <div class="carousel-caption">
-            <h1>Another example headline.</h1>
-            <p>Some representative placeholder content for the second slide of the carousel.</p>
-            <p><a class="btn btn-lg btn-primary" href="#">Learn more</a></p>
+            {% if random_meals.0 %}
+            <p>{{ random_meals.0|kcal_count }} kcal / 100g, koszt: {{ random_meals.0|price_count }} zł</p>
+            <p><a class="btn btn-lg btn-primary" href="/meals/{{ random_meals.0.id }}">{{ random_meals.0.name }}</a></p>
+            {% endif %}
           </div>
         </div>
       </div>
@@ -34,9 +37,10 @@
 
         <div class="container">
           <div class="carousel-caption text-end">
-            <h1>One more for good measure.</h1>
-            <p>Some representative placeholder content for the third slide of this carousel.</p>
-            <p><a class="btn btn-lg btn-primary" href="#">Browse gallery</a></p>
+            {% if random_meals.2 %}
+            <p>{{ random_meals.2|kcal_count }} kcal / 100g, koszt: {{ random_meals.2|price_count }} zł</p>
+            <p><a class="btn btn-lg btn-primary" href="/meals/{{ random_meals.2.id }}">{{ random_meals.2.name }}</a></p>
+            {% endif %}
           </div>
         </div>
       </div>
@@ -50,11 +54,15 @@
       <span class="visually-hidden">Next</span>
     </button>
   </div>
+    <div style="text-align: center">
     <ul>
         {% for meal in meals %}
-            <li>{{ meal.name }} {{ meal.date_created }}</li>
+            {% load kcal_count %}
+            <li><a href="/meals/{{ meal.id }}">{{ meal.name }}</a>, {{ meal|kcal_count }} kcal / 100g,
+                waga około: {{ meal|weight_count }} g, koszt: {{ meal|price_count }} zł</li>
         {% endfor %}
     </ul>
+    </div>
     <div style="text-align:center">
     <span>
         {% if meals.has_previous %}
