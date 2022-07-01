@@ -9,134 +9,10 @@ from web_app import models as m
 from web_app import forms as f
 
 
-class BaseView(View):
-    def get(self, request):
-        random_meals = list(m.Meal.objects.all())
-        random.shuffle(random_meals)
-        return render(request, 'base.html', {'random_meals': random_meals})
-
-
-class PlanListView(View):
-    def get(self, request):
-        plans_list = m.Plan.objects.all().order_by('date_created')
-        paginator = Paginator(plans_list, 10)
-        page = request.GET.get('page')
-        plans = paginator.get_page(page)
-        random_plans = list(m.Plan.objects.all())
-        random.shuffle(random_plans)
-        return render(request, 'plans.html', {'plans': plans, 'random_plans': random_plans})
-
-
-class PlanDetailsView(View):
-    def get(self, request, plan_id):
-        plan = get_object_or_404(m.Plan, id=plan_id)
-        meals = m.Meal.objects.filter(plan=plan_id)
-        return render(request, 'plan_details.html', {'plan': plan, 'meals': meals})
-
-
-class PlanAddView(PermissionRequiredMixin, View):
-    permission_required = 'web_app.add_plan'
-
-    def get(self, request):
-        form = f.PlanAddForm()
-        return render(request, 'add_plan.html', {'form': form})
-
-    def post(self, request):
-        form = f.PlanAddForm(request.POST)
-        if form.is_valid():
-            data = form.cleaned_data
-            m.Plan.objects.create(name=data.get('name'),
-                                  user=request.user,
-                                  type=data.get('type'),
-                                  persons=data.get('persons'))
-            last_plan = m.Plan.objects.last()
-            last_plan.meal.set(data.get('meal'))
-            return redirect(f"/plans/{last_plan.id}")
-        return render(request, 'add_plan.html', {'form': form})
-
-
-class PlanModifyView(PermissionRequiredMixin, View):
-    permission_required = 'web_app.change_plan'
-
-    def get(self, request, plan_id):
-        plan = get_object_or_404(m.Plan, id=plan_id)
-        user = request.user
-        if user == plan.user:
-            meals_ids = list(plan.meal.values_list('id', flat=True))
-            form = f.PlanAddForm(initial={'name': plan.name, 'type': plan.type, 'persons': plan.persons, 'meal': meals_ids})
-            return render(request, 'add_plan.html', {'form': form})
-        else:
-            msg = 'Nie możesz edytować czyjegoś planu.'
-            return render(request, 'add_plan.html', {'msg': msg})
-
-    def post(self, request, plan_id):
-        plan = get_object_or_404(m.Plan, id=plan_id)
-        user = request.user
-        if plan.user == user:
-            form = f.PlanAddForm(request.POST)
-            if form.is_valid():
-                data = form.cleaned_data
-                plan.name=data.get('name')
-                plan.type=data.get('type')
-                plan.persons=data.get('persons')
-                plan.meal.set(data.get('meal'))
-                return redirect(f"/plans/{plan_id}")
-            return render(request, 'add_plan.html', {'form': form})
-        else:
-            msg = 'Nie możesz edytować czyjegoś planu.'
-            return render(request, 'add_plan.html', {'msg': msg})
-
-
-class PlanDeleteView(PermissionRequiredMixin, View):
-    permission_required = 'web_app.delete_plan'
-
-    def get(self, request, plan_id):
-        plan = get_object_or_404(m.Plan, id=plan_id)
-        user = request.user
-        if user == plan.user:
-            return render(request, 'delete_plan.html', {'plan': plan})
-        else:
-            msg = 'Nie możesz usunąć czyjegoś planu.'
-        return render(request, 'delete_plan.html', {'msg': msg})
-
-    def post(self, request, plan_id):
-        plan = get_object_or_404(m.Plan, id=plan_id)
-        user = request.user
-        if user == plan.user:
-            if request.POST.get('answer') == 'Tak':
-                plan.delete()
-                return redirect('/plans/')
-            else:
-                return redirect(f"/plans/{plan_id}")
-        else:
-            msg = 'Nie możesz usunąć czyjegoś planu.'
-        return render(request, 'delete_plan.html', {'msg': msg})
-
-
-class MealListView(View):
-    def get(self, request):
-        meals_list = m.Meal.objects.all().order_by('date_created')
-        paginator = Paginator(meals_list, 10)
-        page = request.GET.get('page')
-        meals = paginator.get_page(page)
-        random_meals = list(m.Meal.objects.all())
-        random.shuffle(random_meals)
-        return render(request, 'meals.html', {'meals': meals, 'random_meals': random_meals})
-
-
-class ProductListView(View):
-    def get(self, request):
-        products_list = m.Product.objects.all().order_by('name')
-        paginator = Paginator(products_list, 10)
-        page = request.GET.get('page')
-        products = paginator.get_page(page)
-        return render(request, 'products.html', {'products': products})
-
-
 class LoginView(View):
     def get(self, request):
         form = f.LoginForm()
-        return render(request, 'login.html', {'form': form})
+        return render(request, 'user_login.html', {'form': form})
 
     def post(self, request):
         form = f.LoginForm(request.POST)
@@ -150,9 +26,9 @@ class LoginView(View):
                 return redirect('/')
             else:
                 msg = 'Podano nieprawidłowe dane logowania.'
-                return render(request, 'login.html', {'form': form, 'msg': msg})
+                return render(request, 'user_login.html', {'form': form, 'msg': msg})
         else:
-            return render(request, 'login.html', {'form': form})
+            return render(request, 'user_login.html', {'form': form})
 
 
 class LogoutView(View):
@@ -163,9 +39,10 @@ class LogoutView(View):
 
 
 class UserCreateView(View):
+
     def get(self, request):
         form = f.UserCreateForm()
-        return render(request, 'register.html', {'form': form})
+        return render(request, 'user_register.html', {'form': form})
 
     def post(self, request):
         form = f.UserCreateForm(request.POST)
@@ -184,7 +61,7 @@ class UserCreateView(View):
             user.groups.add(group)
             return redirect('/login/')
         else:
-            return render(request, 'register.html', {'form': form})
+            return render(request, 'user_register.html', {'form': form})
 
 
 class UserUpdateView(PermissionRequiredMixin, View):
@@ -240,3 +117,433 @@ class UserDeleteView(PermissionRequiredMixin, View):
         user = request.user
         user.delete()
         return redirect('/')
+
+
+class BaseView(View):
+    def get(self, request):
+        random_meals = list(m.Meal.objects.all())
+        random.shuffle(random_meals)
+        return render(request, 'base.html', {'random_meals': random_meals})
+
+
+class PlanListView(View):
+    def get(self, request):
+        if request.GET.get('search'):
+            plans_list = m.Plan.objects.filter(name__icontains=request.GET.get('search')).order_by('date_created')
+        else:
+            plans_list = m.Plan.objects.all().order_by('date_created')
+        paginator = Paginator(plans_list, 10)
+        page = request.GET.get('page')
+        plans = paginator.get_page(page)
+        random_plans = list(m.Plan.objects.all())
+        random.shuffle(random_plans)
+        return render(request, 'plans.html', {'plans': plans, 'random_plans': random_plans})
+
+
+class PlanDetailsView(View):
+    def get(self, request, plan_id):
+        plan = get_object_or_404(m.Plan, id=plan_id)
+        meals = m.Meal.objects.filter(plan=plan_id)
+        return render(request, 'plan_details.html', {'plan': plan, 'meals': meals})
+
+
+class PlanAddView(PermissionRequiredMixin, View):
+    permission_required = 'web_app.add_plan'
+
+    def get(self, request):
+        if request.user.is_authenticated:
+            form = f.PlanAddForm()
+            return render(request, 'plan_add.html', {'form': form})
+        else:
+            msg = 'Tylko zalogowany użytkownik może dodawać plany.'
+            return render(request, 'plan_add.html', {'msg': msg})
+
+    def post(self, request):
+        if request.user.is_authenticated:
+            form = f.PlanAddForm(request.POST)
+            if form.is_valid():
+                data = form.cleaned_data
+                m.Plan.objects.create(name=data.get('name'),
+                                      user=request.user,
+                                      type=data.get('type'),
+                                      persons=data.get('persons'))
+                last_plan = m.Plan.objects.last()
+                last_plan.meal.set(data.get('meal'))
+                return redirect(f"/plans/{last_plan.id}")
+            return render(request, 'plan_add.html', {'form': form})
+        else:
+            msg = 'Tylko zalogowany użytkownik może dodawać plany.'
+            return render(request, 'plan_add.html', {'msg': msg})
+
+
+class PlanModifyView(PermissionRequiredMixin, View):
+    permission_required = 'web_app.change_plan'
+
+    def get(self, request, plan_id):
+        plan = get_object_or_404(m.Plan, id=plan_id)
+        user = request.user
+        if user == plan.user:
+            meals_ids = list(plan.meal.values_list('id', flat=True))
+            form = f.PlanAddForm(initial={'name': plan.name, 'type': plan.type,
+                                          'persons': plan.persons, 'meal': meals_ids})
+            return render(request, 'plan_add.html', {'form': form})
+        else:
+            msg = 'Nie możesz edytować czyjegoś planu.'
+            return render(request, 'plan_add.html', {'msg': msg})
+
+    def post(self, request, plan_id):
+        plan = get_object_or_404(m.Plan, id=plan_id)
+        user = request.user
+        if plan.user == user:
+            form = f.PlanAddForm(request.POST)
+            if form.is_valid():
+                data = form.cleaned_data
+                plan.name = data.get('name')
+                plan.type = data.get('type')
+                plan.persons = data.get('persons')
+                plan.meal.set(data.get('meal'))
+                plan.save()
+                return redirect(f"/plans/{plan_id}")
+            return render(request, 'plan_add.html', {'form': form})
+        else:
+            msg = 'Nie możesz edytować czyjegoś planu.'
+            return render(request, 'plan_add.html', {'msg': msg})
+
+
+class PlanDeleteView(PermissionRequiredMixin, View):
+    permission_required = 'web_app.delete_plan'
+
+    def get(self, request, plan_id):
+        plan = get_object_or_404(m.Plan, id=plan_id)
+        user = request.user
+        if user == plan.user:
+            return render(request, 'plan_delete.html', {'plan': plan})
+        else:
+            msg = 'Nie możesz usunąć czyjegoś planu.'
+        return render(request, 'plan_delete.html', {'msg': msg})
+
+    def post(self, request, plan_id):
+        plan = get_object_or_404(m.Plan, id=plan_id)
+        user = request.user
+        if user == plan.user:
+            if request.POST.get('answer') == 'Tak':
+                plan.delete()
+                return redirect('/plans/')
+            else:
+                return redirect(f"/plans/{plan_id}")
+        else:
+            msg = 'Nie możesz usunąć czyjegoś planu.'
+        return render(request, 'plan_delete.html', {'msg': msg})
+
+
+class PlanMealAddView(PermissionRequiredMixin, View):
+    permission_required = 'web_app.add_planmeal'
+
+    def get(self, request, plan_id):
+        user = request.user
+        plan = get_object_or_404(m.Plan, id=plan_id)
+        if plan.user == user:
+            chosen_meals = m.Meal.objects.filter(plan=plan_id)
+            meals = m.Meal.objects.exclude(plan=plan_id)
+            return render(request, 'plan_meal_add.html', {'plan': plan, 'meals': meals, 'chosen_meals': chosen_meals})
+        else:
+            msg = 'Nie możesz edytować czyjegoś planu.'
+            return render(request, 'plan_meal_add.html', {'msg': msg})
+
+    def post(self, request, plan_id):
+        user = request.user
+        plan = get_object_or_404(m.Plan, id=plan_id)
+        if plan.user == user:
+            meals = request.POST.getlist('meal')
+            plan.meal.set(meals)
+            plan.save()
+            return redirect(f"/plans/{plan_id}")
+            # return render(request, 'plan_meal_add.html', {'form': form, 'plan': plan})
+        else:
+            msg = 'Nie możesz edytować czyjegoś planu.'
+            return render(request, 'plan_meal_add.html', {'msg': msg})
+
+
+class MealListView(View):
+    def get(self, request):
+        if request.GET.get('search'):
+            meals_list = m.Meal.objects.filter(name__icontains=request.GET.get('search')).order_by('date_created')
+        else:
+            meals_list = m.Meal.objects.all().order_by('date_created')
+        paginator = Paginator(meals_list, 10)
+        page = request.GET.get('page')
+        meals = paginator.get_page(page)
+        random_meals = list(m.Meal.objects.all())
+        random.shuffle(random_meals)
+        return render(request, 'meals.html', {'meals': meals, 'random_meals': random_meals})
+
+
+class MealDetailsView(View):
+    def get(self, request, meal_id):
+        meal = get_object_or_404(m.Meal, id=meal_id)
+        products = m.Product.objects.filter(meal=meal_id)
+        return render(request, 'meal_details.html', {'meal': meal, 'products': products})
+
+
+class MealAddView(PermissionRequiredMixin, View):
+    permission_required = 'web_app.add_meal'
+
+    def get(self, request):
+        if request.user.is_authenticated:
+            form = f.MealAddForm()
+            return render(request, 'meal_add.html', {'form': form})
+        else:
+            msg = 'Tylko zalogowany użytkownik może dodawać dania.'
+            return render(request, 'meal_add.html', {'msg': msg})
+
+    def post(self, request):
+        if request.user.is_authenticated:
+            form = f.MealAddForm(request.POST)
+            if form.is_valid():
+                data = form.cleaned_data
+                m.Meal.objects.create(name=data.get('name'), user=request.user,
+                                      recipe=data.get('recipe'), type=data.get('type'))
+                last_meal = m.Meal.objects.last()
+                return redirect(f"/meals/{last_meal.id}")
+            return render(request, 'meal_add.html', {'form': form})
+        else:
+            msg = 'Tylko zalogowany użytkownik może dodawać dania.'
+            return render(request, 'meal_add.html', {'msg': msg})
+
+
+class MealModifyView(PermissionRequiredMixin, View):
+    permission_required = 'web_app.change_meal'
+
+    def get(self, request, meal_id):
+        meal = get_object_or_404(m.Meal, id=meal_id)
+        user = request.user
+        if user == meal.user:
+            products_ids = list(meal.product.values_list('id', flat=True))
+            form = f.MealAddForm(initial={'name': meal.name, 'type': meal.type,
+                                          'recipe': meal.recipe, 'product': products_ids})
+            return render(request, 'meal_add.html', {'form': form})
+        else:
+            msg = 'Nie możesz edytować czyjegoś dania.'
+            return render(request, 'meal_add.html', {'msg': msg})
+
+    def post(self, request, meal_id):
+        meal = get_object_or_404(m.Meal, id=meal_id)
+        user = request.user
+        if meal.user == user:
+            form = f.MealAddForm(request.POST)
+            if form.is_valid():
+                data = form.cleaned_data
+                meal.name = data.get('name')
+                meal.type = data.get('type')
+                meal.recipe = data.get('recipe')
+                meal.save()
+                return redirect(f"/meals/{meal_id}")
+            return render(request, 'meal_add.html', {'form': form})
+        else:
+            msg = 'Nie możesz edytować czyjegoś dania.'
+            return render(request, 'meal_add.html', {'msg': msg})
+
+
+class MealDeleteView(PermissionRequiredMixin, View):
+    permission_required = 'web_app.delete_meal'
+
+    def get(self, request, meal_id):
+        meal = get_object_or_404(m.Meal, id=meal_id)
+        user = request.user
+        if user == meal.user:
+            return render(request, 'meal_delete.html', {'meal': meal})
+        else:
+            msg = 'Nie możesz usunąć czyjegoś dania.'
+        return render(request, 'meal_delete.html', {'msg': msg})
+
+    def post(self, request, meal_id):
+        meal = get_object_or_404(m.Meal, id=meal_id)
+        user = request.user
+        if user == meal.user:
+            if request.POST.get('answer') == 'Tak':
+                meal.delete()
+                return redirect('/meals/')
+            else:
+                return redirect(f"/meals/{meal_id}")
+        else:
+            msg = 'Nie możesz usunąć czyjegoś dania.'
+        return render(request, 'meal_delete.html', {'msg': msg})
+
+
+class MealPlanAddView(PermissionRequiredMixin, View):
+    permission_required = 'web_app.add_planmeal'
+
+    def get(self, request, meal_id):
+        user = request.user
+        meal = get_object_or_404(m.Meal, id=meal_id)
+        plans = m.Plan.objects.filter(user=user).exclude(planmeal__meal=meal_id)
+        chosen_plans = m.Plan.objects.filter(user=user, planmeal__meal=meal_id)
+        return render(request, 'meal_plan_add.html', {'meal': meal, 'plans': plans, 'chosen_plans': chosen_plans})
+
+    def post(self, request, meal_id):
+        meal = get_object_or_404(m.Meal, id=meal_id)
+        plans = request.POST.getlist('plan')
+        for plan in plans:
+            m.PlanMeal.objects.create(plan_id=plan, meal_id=meal.id)
+        msg = 'Dodano danie do wybranego planu / ów.'
+        products = m.Product.objects.filter(meal=meal_id)
+        return render(request, 'meal_details.html', {'meal': meal, 'products': products, 'msg': msg})
+
+
+class MealProductAddView(PermissionRequiredMixin, View):
+    permission_required = 'web_app.add_mealproduct'
+
+    def get(self, request, meal_id):
+        user = request.user
+        meal = get_object_or_404(m.Meal, id=meal_id)
+        if meal.user == user:
+            chosen_products = m.Product.objects.filter(meal=meal_id)
+            products = m.Product.objects.exclude(meal=meal_id)
+            return render(request, 'meal_product_add.html', {'meal': meal, 'products': products,
+                                                             'chosen_products': chosen_products})
+        else:
+            msg = 'Nie możesz edytować czyjegoś dania.'
+            return render(request, 'meal_product_add.html', {'msg': msg})
+
+    def post(self, request, meal_id):
+        user = request.user
+        meal = get_object_or_404(m.Meal, id=meal_id)
+        if meal.user == user:
+            products = request.POST.getlist('product')
+            meal.product.set(products)
+            meal.save()
+            return redirect(f"/meals/{meal_id}")
+        else:
+            msg = 'Nie możesz edytować czyjegoś dania.'
+            return render(request, 'meal_product_add.html', {'msg': msg})
+
+
+class MealProductGramsSet(View):
+    def get(self, request, meal_id, product_id):
+        meal_product = get_object_or_404(m.MealProduct, meal_id=meal_id, product_id=product_id)
+        return render(request, 'meal_product_grams_set.html', {'meal_product': meal_product})
+
+    def post(self, request, meal_id, product_id):
+        meal_product = get_object_or_404(m.MealProduct, meal_id=meal_id, product_id=product_id)
+        meal_product.grams = request.POST.get('grams')
+        meal_product.save()
+        return redirect(f"/meals/{meal_id}")
+
+
+class ProductListView(View):
+    def get(self, request):
+        products_list = m.Product.objects.all().order_by('name')
+        paginator = Paginator(products_list, 10)
+        page = request.GET.get('page')
+        products = paginator.get_page(page)
+        return render(request, 'products.html', {'products': products})
+
+
+class ProductDetailsView(View):
+    def get(self, request, product_id):
+        product = get_object_or_404(m.Product, id=product_id)
+        return render(request, 'product_details.html', {'product': product})
+
+
+class ProductAddView(PermissionRequiredMixin, View):
+    permission_required = 'web_app.add_product'
+
+    def get(self, request):
+        form = f.ProductAddForm()
+        return render(request, 'product_add.html', {'form': form})
+
+    def post(self, request):
+        form = f.ProductAddForm(request.POST)
+        if form.is_valid():
+            form.save()
+            last_product = m.Product.objects.last()
+            return redirect(f"/products/{last_product.id}")
+        return render(request, 'product_add.html', {'form': form})
+
+
+class ProductModifyView(PermissionRequiredMixin, View):
+    permission_required = 'web_app.change_product'
+
+    def get(self, request, product_id):
+        product = m.Product.objects.get(id=product_id)
+        form = f.ProductAddForm(instance=product)
+        return render(request, 'product_add.html', {'form': form})
+
+    def post(self, request, product_id):
+        product = m.Product.objects.get(id=product_id)
+        form = f.ProductAddForm(request.POST, instance=product)
+        if form.is_valid():
+            form.save()
+            return redirect(f"/products/{product_id}")
+        return render(request, 'product_add.html', {'form': form})
+
+
+class ProductDeleteView(PermissionRequiredMixin, View):
+    permission_required = 'web_app.delete_product'
+
+    def get(self, request, product_id):
+        product = m.Product.objects.get(id=product_id)
+        return render(request, 'product_delete.html', {'product': product})
+
+    def post(self, request, product_id):
+        product = m.Product.objects.get(id=product_id)
+        if request.POST.get('answer') == 'Tak':
+            product.delete()
+            return redirect('/products/')
+        return redirect(f"/products/{product_id}")
+
+
+class ProductTypeListView(PermissionRequiredMixin, View):
+    permission_required = 'web_app.view_producttype'
+
+    def get(self, request):
+        product_types = m.ProductType.objects.all()
+        return render(request, 'product_types.html', {'product_types': product_types})
+
+
+class ProductTypeAddView(PermissionRequiredMixin, View):
+    permission_required = 'web_app.add_producttype'
+
+    def get(self, request):
+        form = f.ProductTypeAddForm()
+        return render(request, 'product_type_add.html', {'form': form})
+
+    def post(self, request):
+        form = f.ProductTypeAddForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect(f"/products/types/")
+        return render(request, 'product_type_add.html', {'form': form})
+
+
+class ProductTypeModifyView(PermissionRequiredMixin, View):
+    permission_required = 'web_app.change_producttype'
+
+    def get(self, request, product_type_id):
+        product_type = m.ProductType.objects.get(id=product_type_id)
+        form = f.ProductTypeAddForm(instance=product_type)
+        return render(request, 'product_type_add.html', {'form': form})
+
+    def post(self, request, product_type_id):
+        product_type = m.ProductType.objects.get(id=product_type_id)
+        form = f.ProductTypeAddForm(request.POST, instance=product_type)
+        if form.is_valid():
+            form.save()
+            return redirect('/products/types/')
+        return render(request, 'product_type_add.html', {'form': form})
+
+
+class ProductTypeDeleteView(PermissionRequiredMixin, View):
+    permission_required = 'web_app.delete_producttype'
+
+    def get(self, request, product_type_id):
+        product_type = m.ProductType.objects.get(id=product_type_id)
+        return render(request, 'product_type_delete.html', {'product_type': product_type})
+
+    def post(self, request, product_type_id):
+        product_type = m.ProductType.objects.get(id=product_type_id)
+        if request.POST.get('answer') == 'Tak':
+            product_type.delete()
+        return redirect('/products/types/')
+
+

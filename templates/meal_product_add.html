@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load kcal_count %}
+{% block main %}
+    <div style="text-align: center">
+    {% if not msg %}
+        <h4>Dodaj produkty do dania: {{ meal.name }}</h4>
+        <form method="post">
+            <br><input type="submit" value="Zapisz">
+            <br><br><p>Wybrane produkty:</p>
+            {% for product in chosen_products %}
+                <input type="checkbox" name="product" value="{{ product.id }}" checked>&ensp;<a href="/products/{{ product.id }}">
+                {{ product.name }}</a>, cena: <b>{{ product.price }} zł</b><br>
+            {% endfor %}<br>
+            <p>Inne produkty:</p>
+            {% for product in products %}
+                <input type="checkbox" name="product" value="{{ product.id }}">&ensp;<a href="/products/{{ product.id }}">
+                {{ product.name }}</a>, cena: <b>{{ product.price }} zł</b><br>
+            {% endfor %}<br>
+            {% csrf_token %}
+        </form>
+    {% else %}
+        <h4>{{ msg }}</h4>
+    {% endif %}
+    </div>
+{% endblock %}

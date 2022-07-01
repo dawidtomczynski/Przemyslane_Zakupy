@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block main %}
+    <div style="text-align:center">
+        {% if user.is_superuser %}
+            <a href="/products/types/add/"><button type="button" class="btn btn-outline-primary me-2">Dodaj nowy typ</button></a><br><br>
+        {% endif %}
+        {% for product in product_types %}
+            <li>{{ product.name }} &emsp; <a href="/products/types/edit/{{ product.id }}"><button>Edytuj</button></a>
+            <a href="/products/types/delete/{{ product.id }}"><button>Usuń</button></a></li><br>
+        {% endfor %}
+    </div><br>
+{% endblock %}

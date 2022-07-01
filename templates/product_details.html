@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block main %}
+    <div style="text-align:center">
+        <h3>{{ product.name }}</h3><br>
+        <p>Typ produktu: {{ product.type }}</p>
+        <p>Kaloryczność: {{ product.kcal }} kcal / 100g</p>
+        <p>Cena: <b>{{ product.price }} zł</b></p>
+        {% if user.is_superuser %}
+            <a href="/products/edit/{{ product.id }}"><button type="button" class="btn btn-outline-primary me-2">Edytuj</button></a>
+            <a href="/products/delete/{{ product.id }}"><button type="button" class="btn btn-outline-primary me-2">Usuń</button></a>
+        {% endif %}
+    </div>
+{% endblock %}

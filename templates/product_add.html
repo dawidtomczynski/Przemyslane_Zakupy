@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block main %}
+    <div style="text-align: center">
+        <form method="post">
+            <p><input type="submit" value="Zapisz produkt"></p>
+            {{ form.as_p }}
+            {% csrf_token %}
+        </form>
+    </div>
+{% endblock %}

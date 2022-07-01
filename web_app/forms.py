@@ -57,4 +57,33 @@ class PlanAddForm(f.Form):
     name = f.CharField(max_length=64, label='Nazwa planu')
     type = f.ChoiceField(choices=TYPES, label='Typ planu')
     persons = f.IntegerField(label='Dla ilu osób')
-    meal = f.ModelMultipleChoiceField(queryset=m.Meal.objects.filter(), widget=f.CheckboxSelectMultiple, label='Dania:')
+    meal = f.ModelMultipleChoiceField(queryset=m.Meal.objects.filter(),
+                                      widget=f.CheckboxSelectMultiple, label='Dania:')
+
+
+class PlanMealAddForm(f.Form):
+    meal = f.ModelMultipleChoiceField(queryset=m.Meal.objects.all(),
+                                         widget=f.CheckboxSelectMultiple, label='Dodaj dania:')
+
+
+class MealAddForm(f.Form):
+    name = f.CharField(max_length=64, label='Nazwa dania')
+    type = f.ChoiceField(choices=TYPES, label='Typ posiłku')
+    recipe = f.CharField(widget=f.Textarea, label='Przepis', required=False)
+
+
+class MealProductAddForm(f.Form):
+    product = f.ModelMultipleChoiceField(queryset=m.Product.objects.all(),
+                                         widget=f.CheckboxSelectMultiple, label='Dodaj produkty:')
+
+
+class ProductAddForm(f.ModelForm):
+    class Meta:
+        model = m.Product
+        fields = '__all__'
+
+
+class ProductTypeAddForm(f.ModelForm):
+    class Meta:
+        model = m.ProductType
+        fields = '__all__'

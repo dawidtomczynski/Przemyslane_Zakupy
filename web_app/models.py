@@ -42,7 +42,8 @@ class PlanMeal(models.Model):
 class Meal(models.Model):
     name = models.CharField(max_length=64)
     date_created = models.DateTimeField(auto_now_add=True)
-    recipe = models.TextField()
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET(get_sentinel_user))
+    recipe = models.TextField(blank=True)
     type = models.IntegerField(choices=TYPES)
     product = models.ManyToManyField('Product', through='MealProduct')
 
@@ -63,7 +64,7 @@ class Product(models.Model):
 class MealProduct(models.Model):
     meal = models.ForeignKey(Meal, on_delete=models.CASCADE)
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
-    grams = models.IntegerField()
+    grams = models.IntegerField(default=0)
 
 
 class ProductType(models.Model):

@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block main %}
+    <div style="text-align:center">
+    <h4>Podaj gramaturę produktu: {{ meal_product.product.name }} w daniu: {{ meal_product.meal.name }}</h4>
+    <form method="post">
+        <input type="number" name="grams" placeholder="Gramy" value="{{ meal_product.grams  }}">
+        <input type="submit" value="Zapisz">
+        {% csrf_token %}
+    </form>
+    </div>
+{% endblock %}

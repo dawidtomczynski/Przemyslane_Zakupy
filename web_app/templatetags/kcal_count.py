@@ -1,4 +1,6 @@
 from django import template
+from django.shortcuts import get_object_or_404
+
 from web_app import models as m
 
 register = template.Library()
@@ -10,7 +12,10 @@ def kcal_count(arg):
     total_kcal = []
     for product in products:
         total_kcal.append(product.kcal)
-    return int((sum(total_kcal)) / len(total_kcal))
+    if len(total_kcal) != 0:
+        return int((sum(total_kcal)) / len(total_kcal))
+    else:
+        return 0
 
 
 @register.filter(name='price_count')
@@ -33,11 +38,10 @@ def weight_count(arg):
 
 @register.filter(name='plan_cost')
 def plan_cost(arg):
-    meals = m.PlanMeal.objects.filter(plan_id=arg.id)
     cost = 0
+    meals = m.PlanMeal.objects.filter(plan_id=arg.id)
     for meal in meals:
-        products = m.MealProduct.objects.filter(meal_id=meal.id)
-        for product in products.iterator():
-            p = m.Product.objects.get(id=product.product_id)
-            cost += p.price
+        products = m.Product.objects.filter(meal=meal.meal_id)
+        for product in products:
+            cost += product.price
     return cost

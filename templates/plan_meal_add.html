@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load kcal_count %}
+{% block main %}
+    <div style="text-align: center">
+    {% if not msg %}
+        <h4>Dodaj dania do planu: {{ plan.name }}</h4>
+        <form method="post">
+            <br><input type="submit" value="Zapisz">
+            <br><br><p>Wybrane dania:</p>
+            {% for meal in chosen_meals %}
+                <input type="checkbox" name="meal" value="{{ meal.id }}" checked>&ensp;<a href="/meals/{{ meal.id }}">
+                {{ meal.name }}</a>, {{ meal|kcal_count }} kcal / 100g, waga około: {{ meal|weight_count }}g, koszt: <b>{{ meal|price_count }} zł</b><br>
+            {% endfor %}<br>
+            <p>Inne dania:</p>
+            {% for meal in meals %}
+                <input type="checkbox" name="meal" value="{{ meal.id }}">&ensp;<a href="/meals/{{ meal.id }}">
+                {{ meal.name }}</a>, {{ meal|kcal_count }} kcal / 100g, waga około: {{ meal|weight_count }}g, koszt: <b>{{ meal|price_count }} zł</b><br>
+            {% endfor %}
+            {% csrf_token %}
+        </form>
+    {% else %}
+        <h4>{{ msg }}</h4>
+    {% endif %}
+    </div>
+{% endblock %}

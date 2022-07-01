@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block main %}
+    <div style="text-align:center">
+    <h4>Czy na pewno chcesz usunąć typ produktu: {{ product_type.name }}?</h4><br>
+        <form method="post">
+            <input type="submit" name="answer" value="Tak">&emsp;
+            <input type="submit" name="answer" value="Nie">
+            {% csrf_token %}
+        </form>
+    </div>
+{% endblock %}
