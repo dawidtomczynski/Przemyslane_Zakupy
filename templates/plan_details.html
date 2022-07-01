@@ -9,10 +9,13 @@
             {% for meal in meals %}
                 <li><a href="/meals/{{ meal.id }}">{{ meal.name }}</a>, {{ meal|kcal_count }} kcal / 100g, waga około: {{ meal|weight_count }}g, koszt: <b>{{ meal|price_count }} zł</b></li>
             {% endfor %}<br>
-        {% if user.is_authenticated and plan.user_id == user.id %}
-            <a href="/plans/add-meal/{{ plan.id }}"><button type="button" class="btn btn-outline-primary me-2">Dodaj / usuń dania</button></a>
-            <a href="/plans/edit/{{ plan.id }}"><button type="button" class="btn btn-outline-primary me-2">Edytuj plan</button></a>
-            <a href="/plans/delete/{{ plan.id }}"><button type="button" class="btn btn-outline-primary me-2">Usuń plan</button></a>
+        {% if user.is_authenticated %}
+            <a href="/profile/active-plan/{{ plan.id }}"><button type="button" class="btn btn-outline-primary me-2">Ustaw jako aktualny plan</button></a>
+            {% if plan.user_id == user.id %}
+                <a href="/plans/add-meal/{{ plan.id }}"><button type="button" class="btn btn-outline-primary me-2">Dodaj / usuń dania</button></a>
+                <a href="/plans/edit/{{ plan.id }}"><button type="button" class="btn btn-outline-primary me-2">Edytuj plan</button></a>
+                <a href="/plans/delete/{{ plan.id }}"><button type="button" class="btn btn-outline-primary me-2">Usuń plan</button></a>
+            {% endif %}
         {% endif %}
     </div>
 {% endblock %}

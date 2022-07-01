@@ -30,8 +30,8 @@ class Plan(models.Model):
 
 
 class SelectedPlan(models.Model):
-    user = models.ManyToManyField(User)
-    active_plan = models.ForeignKey(Plan, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    active_plan = models.ForeignKey(Plan, on_delete=models.CASCADE, null=True)
 
 
 class PlanMeal(models.Model):

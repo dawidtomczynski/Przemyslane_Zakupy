@@ -27,6 +27,10 @@ urlpatterns = [
     path('profile/update/', v.UserUpdateView.as_view()),
     path('profile/update-password/', v.UserUpdatePasswordView.as_view()),
     path('profile/delete/', v.UserDeleteView.as_view()),
+    path('profile/plans/', v.UserPlanListView.as_view()),
+    path('profile/meals/', v.UserMealList.as_view()),
+    path('profile/active-plan/', v.UserSelectedPlanView.as_view()),
+    path('profile/active-plan/<int:plan_id>', v.UserSelectedPlanAddView.as_view()),
 
 
     path('', v.BaseView.as_view()),
@@ -36,6 +40,7 @@ urlpatterns = [
     path('plans/edit/<int:plan_id>/', v.PlanModifyView.as_view()),
     path('plans/delete/<int:plan_id>/', v.PlanDeleteView.as_view()),
     path('plans/add-meal/<int:plan_id>', v.PlanMealAddView.as_view()),
+
 
 
     path('meals/', v.MealListView.as_view()),
@@ -57,10 +62,6 @@ urlpatterns = [
     path('products/types/add/', v.ProductTypeAddView.as_view()),
     path('products/types/edit/<int:product_type_id>', v.ProductTypeModifyView.as_view()),
     path('products/types/delete/<int:product_type_id>', v.ProductTypeDeleteView.as_view()),
-
-
-
-
 
 
 ]

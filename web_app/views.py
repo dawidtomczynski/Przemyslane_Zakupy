@@ -547,3 +547,47 @@ class ProductTypeDeleteView(PermissionRequiredMixin, View):
         return redirect('/products/types/')
 
 
+class UserPlanListView(View):
+    def get(self, request):
+        user = request.user
+        user_plans = m.Plan.objects.filter(user=user)
+        return render(request, 'user_plans.html', {'user_plans': user_plans})
+
+
+class UserMealList(View):
+    def get(self, request):
+        user = request.user
+        user_meals = m.Meal.objects.filter(user=user)
+        return render(request, 'user_meals.html', {'user_meals': user_meals})
+
+
+class UserSelectedPlanView(View):
+    def get(self, request):
+        user = request.user
+        selected_plan = m.SelectedPlan.objects.get(user=user)
+        plan = m.Plan.objects.get(id=selected_plan.active_plan_id)
+        meals = m.Meal.objects.filter(plan=plan.id)
+        return render(request, 'user_selected_plan.html', {'plan': plan, 'meals': meals})
+
+
+class UserSelectedPlanAddView(View):
+    def get(self, request, plan_id):
+        if request.user.is_authenticated:
+            plan = m.Plan.objects.get(id=plan_id)
+            return render(request, 'user_selected_plan_add.html', {'plan': plan})
+        else:
+            msg = 'Najpierw musisz się zalogować.'
+            return render(request, 'user_selected_plan_add.html', {'msg': msg})
+
+    def post(self, request, plan_id):
+        user = request.user
+        if user.is_authenticated:
+            plan = m.Plan.objects.get(id=plan_id)
+            selected_plan = m.SelectedPlan.objects.get(user=user)
+            selected_plan.active_plan_id = plan_id
+            selected_plan.save()
+            return redirect('/profile/active-plan/')
+        else:
+            msg = 'Najpierw musisz się zalogować.'
+            return render(request, 'user_selected_plan_add.html', {'msg': msg})
+
