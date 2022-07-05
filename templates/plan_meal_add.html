@@ -7,16 +7,19 @@
         <a href="/plans/add-meal-random/{{ plan.id }}"><button>Dodaj losowe danie</button></a>
         <form method="post">
             <br><input type="submit" value="Zapisz">
-            <br><br><p>Wybrane dania:</p>
+            <br><br><p><b>Wybrane dania:</b></p>
             {% for meal in chosen_meals %}
-                <input type="checkbox" name="meal" value="{{ meal.id }}" checked>&ensp;<a href="/meals/{{ meal.id }}">
-                {{ meal.name }}</a>, {{ meal|kcal_count }} kcal / 100g, waga około: {{ meal|weight_count }}g, koszt: <b>{{ meal|price_count }} zł</b><br>
+                <p><input type="checkbox" name="meal" value="{{ meal.id }}" checked>&ensp;<a href="/meals/{{ meal.id }}">{{ meal.name }}</a>,
+                    {{ meal|kcal_count }} kcal / 100g, waga około: {{ meal|weight_count }}g, koszt: <b>{{ meal|price_count }} zł</b></p>
             {% endfor %}<br>
-            <p>Inne dania:</p>
+            <p><b>Inne dania:</b></p>
+            <p><input type="text" id="myInput" onkeyup="searchFunctionPars()" placeholder="Wyszukaj..."></p>
+            <div id="myUL">
             {% for meal in meals %}
-                <input type="checkbox" name="meal" value="{{ meal.id }}">&ensp;<a href="/meals/{{ meal.id }}">
-                {{ meal.name }}</a>, {{ meal|kcal_count }} kcal / 100g, waga około: {{ meal|weight_count }}g, koszt: <b>{{ meal|price_count }} zł</b><br>
+                <p><input type="checkbox" name="meal" value="{{ meal.id }}">&ensp;<a href="/meals/{{ meal.id }}">{{ meal.name }}</a>,
+                    {{ meal|kcal_count }} kcal / 100g, waga około: {{ meal|weight_count }}g, koszt: <b>{{ meal|price_count }} zł</b></p>
             {% endfor %}
+            </div>
             {% csrf_token %}
         </form>
     {% else %}

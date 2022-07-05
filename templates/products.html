@@ -1,12 +1,15 @@
 {% extends 'base.html' %}
 {% block main %}
+    <br>
     <div style="text-align:center">
         {% if user.is_superuser %}
-            <a href="/products/add/"><button type="button" class="btn btn-outline-primary me-2">Dodaj nowy produkt</button></a>
-            <a href="/products/types/"><button type="button" class="btn btn-outline-primary me-2">Typy produktów</button></a><br><br>
+            <p><a href="/products/add/"><button type="button" class="btn btn-outline-primary me-2">Dodaj nowy produkt</button></a>
+                <a href="/products/types/"><button type="button" class="btn btn-outline-primary me-2">Typy produktów</button></a></p>
         {% endif %}
+        <p><input type="text" id="myInput" onkeyup="searchFunction()" placeholder="Wyszukaj..."></p>
+    <div id="myUL">
         {% for product in products %}
-            <li><a href="/products/{{ product.id }}">{{ product.name }}</a>, {{ product.price }} zł</li>
+            <p><li><a href="/products/{{ product.id }}">{{ product.name }}</a>, {{ product.price }} zł</li>
         {% endfor %}
     </div><br>
     <div style="text-align:center">

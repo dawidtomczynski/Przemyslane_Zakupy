@@ -53,20 +53,23 @@
       <span class="carousel-control-next-icon" aria-hidden="true"></span>
       <span class="visually-hidden">Next</span>
     </button>
-  </div>
+  </div><br>
     <div style="text-align: center">
     {% if user.is_authenticated %}
-        <br><p><a href="/plans/add/"><button type="button" class="btn btn-outline-primary me-2">Dodaj nowy plan</button></a></p><br>
+        <p><a href="/plans/add/"><button type="button" class="btn btn-outline-primary me-2">Dodaj nowy plan</button></a></p>
     {% endif %}
+        <p><input type="text" id="myInput" onkeyup="searchFunction()" placeholder="Wyszukaj..."></p>
+    <div id="myUL">
         {% for plan in plans %}
-            <li><a href="/plans/{{ plan.id }}">{{ plan.name }}</a>,
+            <p><li><a href="/plans/{{ plan.id }}">{{ plan.name }}</a>,
             {% if plan.persons == 1 %}
                 dla {{ plan.persons }} osoby,
             {% else %}
                 dla {{ plan.persons }} osób,
             {% endif %}
-             koszt całkowity: <b>{{ plan|plan_cost }} zł</b></li>
+            koszt całkowity: <b>{{ plan|plan_cost }} zł</b></li>
         {% endfor %}
+    </div>
     </div><br>
     <div style="text-align:center">
     <span>

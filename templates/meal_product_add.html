@@ -6,15 +6,17 @@
         <h4>Dodaj produkty do dania: {{ meal.name }}</h4>
         <form method="post">
             <br><input type="submit" value="Zapisz">
-            <br><br><p>Wybrane produkty:</p>
+            <br><br><p><b>Wybrane produkty:</b></p>
             {% for product in chosen_products %}
-                <input type="checkbox" name="product" value="{{ product.id }}" checked>&ensp;<a href="/products/{{ product.id }}">
-                {{ product.name }}</a>, cena: <b>{{ product.price }} zł</b><br>
+                <p><input type="checkbox" name="product" value="{{ product.id }}" checked>&ensp;<a href="/products/{{ product.id }}">
+                    {{ product.name }}</a>, cena: <b>{{ product.price }} zł</b></p>
             {% endfor %}<br>
-            <p>Inne produkty:</p>
+            <p><b>Inne produkty:</b></p>
+            <p><input type="text" id="myInput" onkeyup="searchFunctionPars()" placeholder="Wyszukaj..."></p>
+            <div id="myUL">
             {% for product in products %}
-                <input type="checkbox" name="product" value="{{ product.id }}">&ensp;<a href="/products/{{ product.id }}">
-                {{ product.name }}</a>, cena: <b>{{ product.price }} zł</b><br>
+                <p><input type="checkbox" name="product" value="{{ product.id }}">&ensp;
+                <a href="/products/{{ product.id }}">{{ product.name }}</a>, cena: <b>{{ product.price }} zł</b><br></p>
             {% endfor %}<br>
             {% csrf_token %}
         </form>

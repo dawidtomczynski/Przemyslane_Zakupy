@@ -5,23 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bc4aa7e6-afb6-4cd6-8f9e-fbc87764dd2a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/templates/plan_product_list.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/user_favourite_meals.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/user_favourite_plans.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Przemyslane_Zakupy/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/Przemyslane_Zakupy/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/meal_details.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/meal_details.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/meal_plan_add.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/meal_plan_add.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/meal_product_add.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/meal_product_add.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/meals.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/meals.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/plan_details.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/plan_details.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/plan_meal_add.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/plan_meal_add.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/plan_product_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/plan_product_list.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/plans.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/plans.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/products.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/products.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/user_selected_plan.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/user_selected_plan.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web_app/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/web_app/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web_app/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/web_app/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web_app/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/web_app/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web_app/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/web_app/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web_app/static/js/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/web_app/static/js/script.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,6 +32,7 @@
       <list>
         <option value="HTML File" />
         <option value="Python Script" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -110,7 +107,7 @@
       <updated>1656360270247</updated>
       <workItem from="1656360273743" duration="17650000" />
       <workItem from="1656414579891" duration="12534000" />
-      <workItem from="1656435756583" duration="83298000" />
+      <workItem from="1656435756583" duration="91936000" />
     </task>
     <servers />
   </component>

@@ -9,13 +9,13 @@
         <p>Koszt: <b>{{ meal|price_count }} zł</b></p>
         <p>Produkty w daniu:</p>
             {% for product in products %}
-                <li><a href="/products/{{ product.id }}">{{ product.name }}</a>&emsp;
+                <p><li><a href="/products/{{ product.id }}">{{ product.name }}</a>&emsp;
                     <a href="/meals/set-grams/{{ meal.id }}/{{ product.id }}">
                         {% if meal.user == user %}
-                            <button>Gramatura</button></a></li><br>
+                            <button>Gramatura</button></a></li>
                         {% endif %}
             {% endfor %}
-        {{ meal.recipe }}<br><br>
+        <p>{{ meal.recipe }}</p>
         {% if user.is_authenticated %}
             <a href="/meals/add-plan/{{ meal.id }}"><button type="button" class="btn btn-outline-primary me-2">Dodaj do planu</button></a>
             {% if meal.user == user %}
@@ -26,5 +26,5 @@
                 <a href="/profile/favourite-meals/{{ meal.id }}"><button type="button" class="btn btn-outline-primary me-2">Dodaj do ulubionych</button></a>
             {% endif %}
         {% endif %}
-    </div>
+    </div><br>
 {% endblock %}

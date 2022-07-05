@@ -6,16 +6,19 @@
         <h4>Dodaj danie: {{ meal.name }} do planu:</h4>
         <form method="post">
             <br><input type="submit" value="Zapisz">
-            <br><br><p>Aktualnie w planach:</p>
+            <br><br><p><b>Aktualnie w planach:</b></p>
             {% for plan in chosen_plans %}
-                <li><a href="/plans/{{ plan.id }}">{{ plan.name }}</a>, koszt całkowity: <b>{{ plan|plan_cost }} zł</b></li>
+                <p><li><a href="/plans/{{ plan.id }}">{{ plan.name }}</a>, koszt całkowity: <b>{{ plan|plan_cost }} zł</b></li></p>
             {% endfor %}
-            <br><p>Inne plany:</p>
+            <p><b>Inne plany:</b></p>
+            <p><input type="text" id="myInput" onkeyup="searchFunctionPars()" placeholder="Wyszukaj..."></p>
+            <div id="myUL">
             {% for plan in plans %}
-                <input type="checkbox" name="plan" value="{{ plan.id }}">&ensp;<a href="/plans/{{ plan.id }}">
-                {{ plan.name }}</a>, koszt całkowity: <b>{{ plan|plan_cost }} zł</b><br>
+                <p><input type="checkbox" name="plan" value="{{ plan.id }}">&ensp;<a href="/plans/{{ plan.id }}">{{ plan.name }}</a>,
+                    koszt całkowity: <b>{{ plan|plan_cost }} zł</b><br></p>
             {% endfor %}<br>
             {% csrf_token %}
+            </div>
         </form>
     {% else %}
         <h4>{{ msg }}</h4>

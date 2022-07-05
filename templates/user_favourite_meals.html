@@ -3,9 +3,9 @@
 {% block main %}
     <div style="text-align: center">
         {% for meal in favourite_meals %}
-            <li><a href="/meals/{{ meal.id }}">{{ meal.name }}</a>, {{ meal|kcal_count }} kcal / 100g,
+            <p><li><a href="/meals/{{ meal.id }}">{{ meal.name }}</a>, {{ meal|kcal_count }} kcal / 100g,
                 waga około: {{ meal|weight_count }} g, koszt: <b>{{ meal|price_count }} zł</b>
-                &emsp; <a href="/profile/favourite-meals/delete/{{ meal.id }}"><button>Usuń z ulubionych</button></a></li><br>
+                &emsp; <a href="/profile/favourite-meals/delete/{{ meal.id }}"><button>Usuń z ulubionych</button></a></li>
         {% endfor %}<br>
     </div><br>
 {% endblock %}
