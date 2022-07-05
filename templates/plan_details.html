@@ -3,7 +3,11 @@
 {% block main %}
     <div style="text-align:center">
         <h3>{{ plan.name }}</h3>
+    {% if plan.persons == 1 %}
+        <p>Dla {{ plan.persons }} osoby</p>
+    {% else %}
         <p>Dla {{ plan.persons }} osób</p>
+    {% endif %}
         <p>Całkowity koszt: <b>{{ plan|plan_cost }} zł</b></p>
         <p>Dania w planie:</p>
             {% for meal in meals %}
@@ -15,6 +19,8 @@
                 <a href="/plans/add-meal/{{ plan.id }}"><button type="button" class="btn btn-outline-primary me-2">Dodaj / usuń dania</button></a>
                 <a href="/plans/edit/{{ plan.id }}"><button type="button" class="btn btn-outline-primary me-2">Edytuj plan</button></a>
                 <a href="/plans/delete/{{ plan.id }}"><button type="button" class="btn btn-outline-primary me-2">Usuń plan</button></a>
+            {% else %}
+                <a href="/profile/favourite-plans/{{ plan.id }}"><button type="button" class="btn btn-outline-primary me-2">Dodaj do ulubionych</button></a>
             {% endif %}
         {% endif %}
     </div>

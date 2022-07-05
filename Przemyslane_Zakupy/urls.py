@@ -28,7 +28,13 @@ urlpatterns = [
     path('profile/update-password/', v.UserUpdatePasswordView.as_view()),
     path('profile/delete/', v.UserDeleteView.as_view()),
     path('profile/plans/', v.UserPlanListView.as_view()),
+    path('profile/favourite-plans/', v.UserFavouritePlanListView.as_view()),
+    path('profile/favourite-plans/<int:plan_id>', v.UserFavouritePlanAddView.as_view()),
+    path('profile/favourite-plans/delete/<int:plan_id>', v.UserFavouritePlanDeleteView.as_view()),
     path('profile/meals/', v.UserMealList.as_view()),
+    path('profile/favourite-meals/', v.UserFavouriteMealListView.as_view()),
+    path('profile/favourite-meals/<int:meal_id>', v.UserFavouriteMealAddView.as_view()),
+    path('profile/favourite-meals/delete/<int:meal_id>', v.UserFavouriteMealDeleteView.as_view()),
     path('profile/active-plan/', v.UserSelectedPlanView.as_view()),
     path('profile/active-plan/<int:plan_id>', v.UserSelectedPlanAddView.as_view()),
 
@@ -40,6 +46,9 @@ urlpatterns = [
     path('plans/edit/<int:plan_id>/', v.PlanModifyView.as_view()),
     path('plans/delete/<int:plan_id>/', v.PlanDeleteView.as_view()),
     path('plans/add-meal/<int:plan_id>', v.PlanMealAddView.as_view()),
+    path('plans/add-meal-random/<int:plan_id>', v.PlanMealRandomAdd.as_view()),
+    path('plans/product-list/<int:plan_id>', v.PlanProductListView.as_view()),
+
 
 
 

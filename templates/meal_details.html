@@ -5,7 +5,7 @@
         <p>{{ msg }}</p>
         <h3>{{ meal.name }}</h3>
         <p>{{ meal|kcal_count }} kcal / 100g</p>
-        <p>Waga całkowita: {{ meal|weight_count }}g</p>
+        <p>Waga około: {{ meal|weight_count }}g</p>
         <p>Koszt: <b>{{ meal|price_count }} zł</b></p>
         <p>Produkty w daniu:</p>
             {% for product in products %}
@@ -22,6 +22,8 @@
                 <a href="/meals/add-product/{{ meal.id }}"><button type="button" class="btn btn-outline-primary me-2">Dodaj / usuń produkty</button></a>
                 <a href="/meals/edit/{{ meal.id }}"><button type="button" class="btn btn-outline-primary me-2">Edytuj</button></a>
                 <a href="/meals/delete/{{ meal.id }}"><button type="button" class="btn btn-outline-primary me-2">Usuń</button></a>
+            {% else %}
+                <a href="/profile/favourite-meals/{{ meal.id }}"><button type="button" class="btn btn-outline-primary me-2">Dodaj do ulubionych</button></a>
             {% endif %}
         {% endif %}
     </div>

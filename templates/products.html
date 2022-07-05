@@ -6,7 +6,7 @@
             <a href="/products/types/"><button type="button" class="btn btn-outline-primary me-2">Typy produktów</button></a><br><br>
         {% endif %}
         {% for product in products %}
-            <li><a href="/products/{{ product.id }}">{{ product.name }}</a>, {{ product.price }} PLN</li>
+            <li><a href="/products/{{ product.id }}">{{ product.name }}</a>, {{ product.price }} zł</li>
         {% endfor %}
     </div><br>
     <div style="text-align:center">

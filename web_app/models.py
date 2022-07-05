@@ -34,6 +34,11 @@ class SelectedPlan(models.Model):
     active_plan = models.ForeignKey(Plan, on_delete=models.CASCADE, null=True)
 
 
+class FavouritePlan(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    plan = models.ManyToManyField(Plan)
+
+
 class PlanMeal(models.Model):
     plan = models.ForeignKey(Plan, on_delete=models.CASCADE)
     meal = models.ForeignKey('Meal', on_delete=models.CASCADE)
@@ -49,6 +54,11 @@ class Meal(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class FavouriteMeal(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    meal = models.ManyToManyField(Meal)
 
 
 class Product(models.Model):

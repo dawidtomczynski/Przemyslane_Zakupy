@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% load kcal_count %}
+{% block main %}
+    <div style="text-align: center">
+        {% for plan in favourite_plans %}
+            <li><a href="/plans/{{ plan.id }}">{{ plan.name }}</a>, dla {{ plan.persons }} osób, koszt całkowity: <b>{{ plan|plan_cost }} zł</b>
+                &emsp; <a href="/profile/favourite-plans/delete/{{ plan.id }}"><button>Usuń z ulubionych</button></a></li><br>
+        {% endfor %}<br>
+    </div><br>
+{% endblock %}

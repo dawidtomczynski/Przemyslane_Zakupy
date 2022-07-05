@@ -2,6 +2,7 @@
 {% load kcal_count %}
 {% block main %}
     <div style="text-align:center">
+    {% if not msg %}
         <h3>Aktualny plan: {{ plan.name }}</h3>
         <p>Dla {{ plan.persons }} osób</p>
         <p>Całkowity koszt: <b>{{ plan|plan_cost }} zł</b></p>
@@ -9,4 +10,13 @@
             {% for meal in meals %}
                 <li><a href="/meals/{{ meal.id }}">{{ meal.name }}</a>, {{ meal|kcal_count }} kcal / 100g, waga około: {{ meal|weight_count }}g, koszt: <b>{{ meal|price_count }} zł</b></li>
             {% endfor %}<br>
+            <a href="/plans/product-list/{{ plan.id }}"><button type="button" class="btn btn-outline-primary me-2">Lista produktów</button></a>
+            {% if plan.user_id == user.id %}
+                <a href="/plans/add-meal/{{ plan.id }}"><button type="button" class="btn btn-outline-primary me-2">Dodaj / usuń dania</button></a>
+                <a href="/plans/edit/{{ plan.id }}"><button type="button" class="btn btn-outline-primary me-2">Edytuj plan</button></a>
+                <a href="/plans/delete/{{ plan.id }}"><button type="button" class="btn btn-outline-primary me-2">Usuń plan</button></a>
+            {% endif %}
+    {% else %}
+        <h4>{{ msg }}</h4>
+    {% endif %}
 {% endblock %}

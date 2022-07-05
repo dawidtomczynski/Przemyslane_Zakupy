@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block main %}
+    <div style="text-align:center">
+        <h4>Lista produktów dla planu: {{ plan.name }}</h4><br>
+        {% for product in products %}
+            <li>{{ product.name }}, cena: {{ product.price }} zł</li>
+        {% endfor %}<br>
+        <h4>Łączna kwota: {{ cost }} zł</h4>
+    </div>
+{% endblock %}

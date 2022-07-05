@@ -59,7 +59,6 @@
         <br><p><a href="/meals/add/"><button type="button" class="btn btn-outline-primary me-2">Dodaj nowe danie</button></a></p><br>
     {% endif %}
         {% for meal in meals %}
-            {% load kcal_count %}
             <li><a href="/meals/{{ meal.id }}">{{ meal.name }}</a>, {{ meal|kcal_count }} kcal / 100g,
                 waga około: {{ meal|weight_count }} g, koszt: <b>{{ meal|price_count }} zł</b></li>
         {% endfor %}

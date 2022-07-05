@@ -14,7 +14,7 @@
         <div class="container">
           <div class="carousel-caption text-start">
             {% if random_plans.1 %}
-            <p>Dla {{ random_plans.1.persons }} osób, koszt całkowity: {{ random_plans.1|plan_cost }}</p>
+            <p>Dla {{ random_plans.1.persons }} osób, koszt całkowity: {{ random_plans.1|plan_cost }} zł</p>
             <p><a class="btn btn-lg btn-primary" href="/plans/{{ random_plans.1.id }}">{{ random_plans.1.name }}</a></p>
             {% endif %}
           </div>
@@ -26,7 +26,7 @@
         <div class="container">
           <div class="carousel-caption">
             {% if random_plans.0 %}
-            <p>Dla {{ random_plans.0.persons }} osób, koszt całkowity: {{ random_plans.0|plan_cost }}</p>
+            <p>Dla {{ random_plans.0.persons }} osób, koszt całkowity: {{ random_plans.0|plan_cost }} zł</p>
             <p><a class="btn btn-lg btn-primary" href="/plans/{{ random_plans.0.id }}">{{ random_plans.0.name }}</a></p>
             {% endif %}
           </div>
@@ -38,7 +38,7 @@
         <div class="container">
           <div class="carousel-caption text-end">
             {% if random_plans.2 %}
-            <p>Dla {{ random_plans.2.persons }} osób, koszt całkowity: {{ random_plans.2|plan_cost }}</p>
+            <p>Dla {{ random_plans.2.persons }} osób, koszt całkowity: {{ random_plans.2|plan_cost }} zł</p>
             <p><a class="btn btn-lg btn-primary" href="/plans/{{ random_plans.2.id }}">{{ random_plans.2.name }}</a></p>
             {% endif %}
           </div>
@@ -53,13 +53,19 @@
       <span class="carousel-control-next-icon" aria-hidden="true"></span>
       <span class="visually-hidden">Next</span>
     </button>
-  </div><br>
+  </div>
     <div style="text-align: center">
     {% if user.is_authenticated %}
         <br><p><a href="/plans/add/"><button type="button" class="btn btn-outline-primary me-2">Dodaj nowy plan</button></a></p><br>
     {% endif %}
         {% for plan in plans %}
-            <li><a href="/plans/{{ plan.id }}">{{ plan.name }}</a>, dla {{ plan.persons }} osób, koszt całkowity: <b>{{ plan|plan_cost }} zł</b></li>
+            <li><a href="/plans/{{ plan.id }}">{{ plan.name }}</a>,
+            {% if plan.persons == 1 %}
+                dla {{ plan.persons }} osoby,
+            {% else %}
+                dla {{ plan.persons }} osób,
+            {% endif %}
+             koszt całkowity: <b>{{ plan|plan_cost }} zł</b></li>
         {% endfor %}
     </div><br>
     <div style="text-align:center">

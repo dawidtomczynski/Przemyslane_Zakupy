@@ -2,6 +2,7 @@ import random
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.mixins import PermissionRequiredMixin
 from django.contrib.auth.models import User, Group
+from django.core.exceptions import ObjectDoesNotExist
 from django.core.paginator import Paginator
 from django.shortcuts import render, redirect, get_object_or_404, get_list_or_404
 from django.views import View
@@ -168,7 +169,6 @@ class PlanAddView(PermissionRequiredMixin, View):
                                       type=data.get('type'),
                                       persons=data.get('persons'))
                 last_plan = m.Plan.objects.last()
-                last_plan.meal.set(data.get('meal'))
                 return redirect(f"/plans/{last_plan.id}")
             return render(request, 'plan_add.html', {'form': form})
         else:
@@ -185,7 +185,7 @@ class PlanModifyView(PermissionRequiredMixin, View):
         if user == plan.user:
             meals_ids = list(plan.meal.values_list('id', flat=True))
             form = f.PlanAddForm(initial={'name': plan.name, 'type': plan.type,
-                                          'persons': plan.persons, 'meal': meals_ids})
+                                          'persons': plan.persons})
             return render(request, 'plan_add.html', {'form': form})
         else:
             msg = 'Nie możesz edytować czyjegoś planu.'
@@ -201,7 +201,6 @@ class PlanModifyView(PermissionRequiredMixin, View):
                 plan.name = data.get('name')
                 plan.type = data.get('type')
                 plan.persons = data.get('persons')
-                plan.meal.set(data.get('meal'))
                 plan.save()
                 return redirect(f"/plans/{plan_id}")
             return render(request, 'plan_add.html', {'form': form})
@@ -258,10 +257,30 @@ class PlanMealAddView(PermissionRequiredMixin, View):
             plan.meal.set(meals)
             plan.save()
             return redirect(f"/plans/{plan_id}")
-            # return render(request, 'plan_meal_add.html', {'form': form, 'plan': plan})
         else:
             msg = 'Nie możesz edytować czyjegoś planu.'
             return render(request, 'plan_meal_add.html', {'msg': msg})
+
+
+class PlanMealRandomAdd(PermissionRequiredMixin, View):
+    permission_required = 'web_app.add_planmeal'
+
+    def get(self, request, plan_id):
+        user = request.user
+        plan = get_object_or_404(m.Plan, id=plan_id)
+        if plan.user == user:
+            meals = list(m.Meal.objects.all().exclude(plan=plan))
+            random.shuffle(meals)
+            try:
+                m.PlanMeal.objects.create(plan_id=plan_id, meal_id=meals[0].id)
+            except IndexError:
+                pass
+            return redirect(f"/plans/add-meal/{plan_id}")
+        else:
+            msg = 'Nie możesz edytować czyjegoś planu.'
+            return render(request, 'plan_meal_add.html', {'msg': msg})
+
+
 
 
 class MealListView(View):
@@ -432,7 +451,7 @@ class MealProductGramsSet(View):
 
 class ProductListView(View):
     def get(self, request):
-        products_list = m.Product.objects.all().order_by('name')
+        products_list = m.Product.objects.all().order_by('type')
         paginator = Paginator(products_list, 10)
         page = request.GET.get('page')
         products = paginator.get_page(page)
@@ -456,8 +475,7 @@ class ProductAddView(PermissionRequiredMixin, View):
         form = f.ProductAddForm(request.POST)
         if form.is_valid():
             form.save()
-            last_product = m.Product.objects.last()
-            return redirect(f"/products/{last_product.id}")
+            return redirect('/products/')
         return render(request, 'product_add.html', {'form': form})
 
 
@@ -554,6 +572,37 @@ class UserPlanListView(View):
         return render(request, 'user_plans.html', {'user_plans': user_plans})
 
 
+class UserFavouritePlanListView(View):
+    def get(self, request):
+        user = request.user
+        favourite_plans = m.Plan.objects.filter(favouriteplan__user=user)
+        return render(request, 'user_favourite_plans.html', {'favourite_plans': favourite_plans})
+
+
+class UserFavouritePlanAddView(PermissionRequiredMixin, View):
+    permission_required = 'web_app.add_favouriteplan'
+
+    def get(self, request, plan_id):
+        user = request.user
+        try:
+            favourite_plans = m.FavouritePlan.objects.get(user=user)
+        except ObjectDoesNotExist:
+            m.FavouritePlan.objects.create(user=user)
+            favourite_plans = m.FavouritePlan.objects.get(user=user)
+        favourite_plans.plan.add(plan_id)
+        return redirect(f"/plans/{plan_id}/")
+
+
+class UserFavouritePlanDeleteView(PermissionRequiredMixin, View):
+    permission_required = 'web_app.delete_favouriteplan'
+
+    def get(self, request, plan_id):
+        user = request.user
+        favourite_plans = m.FavouritePlan.objects.get(user=user)
+        favourite_plans.plan.remove(plan_id)
+        return redirect('/profile/favourite-plans/')
+
+
 class UserMealList(View):
     def get(self, request):
         user = request.user
@@ -561,16 +610,59 @@ class UserMealList(View):
         return render(request, 'user_meals.html', {'user_meals': user_meals})
 
 
+class UserFavouriteMealListView(View):
+    def get(self, request):
+        user = request.user
+        favourite_meals = m.Meal.objects.filter(favouritemeal__user=user)
+        print(favourite_meals)
+        return render(request, 'user_favourite_meals.html', {'favourite_meals': favourite_meals})
+
+
+class UserFavouriteMealAddView(PermissionRequiredMixin, View):
+    permission_required = 'web_app.add_favouritemeal'
+
+    def get(self, request, meal_id):
+        user = request.user
+        try:
+            favourite_meals = m.FavouriteMeal.objects.get(user=user)
+        except ObjectDoesNotExist:
+            m.FavouriteMeal.objects.create(user=user)
+            favourite_meals = m.FavouriteMeal.objects.get(user=user)
+        favourite_meals.meal.add(meal_id)
+        return redirect(f"/meals/{meal_id}")
+
+
+class UserFavouriteMealDeleteView(PermissionRequiredMixin, View):
+    permission_required = 'web_app.delete_favouritemeal'
+
+    def get(self, request, meal_id):
+        user = request.user
+        favourite_meals = m.FavouriteMeal.objects.get(user=user)
+        favourite_meals.meal.remove(meal_id)
+        return redirect('/profile/favourite-meals/')
+
+
 class UserSelectedPlanView(View):
     def get(self, request):
         user = request.user
-        selected_plan = m.SelectedPlan.objects.get(user=user)
-        plan = m.Plan.objects.get(id=selected_plan.active_plan_id)
-        meals = m.Meal.objects.filter(plan=plan.id)
-        return render(request, 'user_selected_plan.html', {'plan': plan, 'meals': meals})
+        if user:
+            try:
+                selected_plan = m.SelectedPlan.objects.get(user=user)
+                plan = m.Plan.objects.get(id=selected_plan.active_plan_id)
+                meals = m.Meal.objects.filter(plan=plan.id)
+                return render(request, 'user_selected_plan.html', {'plan': plan, 'meals': meals})
+            except ObjectDoesNotExist:
+                msg = 'Nie masz wybranego aktualnego planu.'
+                return render(request, 'user_selected_plan.html', {'msg': msg})
+
+        else:
+            msg = 'Najpierw musisz się zalogować.'
+            return render(request, 'user_selected_plan.html', {'msg': msg})
 
 
-class UserSelectedPlanAddView(View):
+class UserSelectedPlanAddView(PermissionRequiredMixin, View):
+    permission_required = 'web_app.add_selectedplan'
+
     def get(self, request, plan_id):
         if request.user.is_authenticated:
             plan = m.Plan.objects.get(id=plan_id)
@@ -582,12 +674,33 @@ class UserSelectedPlanAddView(View):
     def post(self, request, plan_id):
         user = request.user
         if user.is_authenticated:
-            plan = m.Plan.objects.get(id=plan_id)
-            selected_plan = m.SelectedPlan.objects.get(user=user)
-            selected_plan.active_plan_id = plan_id
-            selected_plan.save()
+            try:
+                selected_plan = m.SelectedPlan.objects.get(user=user)
+                selected_plan.active_plan_id = plan_id
+                selected_plan.save()
+            except ObjectDoesNotExist:
+                m.SelectedPlan.objects.create(user=user, active_plan_id=plan_id)
             return redirect('/profile/active-plan/')
         else:
             msg = 'Najpierw musisz się zalogować.'
             return render(request, 'user_selected_plan_add.html', {'msg': msg})
 
+
+def products_sort(product):
+    return product.type.name
+
+
+class PlanProductListView(View):
+    def get(self, request, plan_id):
+        plan = m.Plan.objects.get(id=plan_id)
+        meals = m.Meal.objects.filter(plan=plan)
+        products_list = []
+        cost = 0
+        for meal in meals:
+            products = m.Product.objects.filter(meal=meal)
+            for product in products:
+                products_list.append(product)
+                cost += product.price
+        products_list.sort(key=products_sort, reverse=True)
+        return render(request, 'plan_product_list.html', {'plan': plan, 'meals': meals,
+                                                          'products': products_list, 'cost': cost})

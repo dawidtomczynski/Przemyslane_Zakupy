@@ -57,8 +57,6 @@ class PlanAddForm(f.Form):
     name = f.CharField(max_length=64, label='Nazwa planu')
     type = f.ChoiceField(choices=TYPES, label='Typ planu')
     persons = f.IntegerField(label='Dla ilu osób')
-    meal = f.ModelMultipleChoiceField(queryset=m.Meal.objects.filter(),
-                                      widget=f.CheckboxSelectMultiple, label='Dania:')
 
 
 class PlanMealAddForm(f.Form):

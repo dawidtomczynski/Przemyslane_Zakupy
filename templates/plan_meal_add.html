@@ -3,7 +3,8 @@
 {% block main %}
     <div style="text-align: center">
     {% if not msg %}
-        <h4>Dodaj dania do planu: {{ plan.name }}</h4>
+        <h4>Dodaj dania do planu: {{ plan.name }}</h4><br>
+        <a href="/plans/add-meal-random/{{ plan.id }}"><button>Dodaj losowe danie</button></a>
         <form method="post">
             <br><input type="submit" value="Zapisz">
             <br><br><p>Wybrane dania:</p>
