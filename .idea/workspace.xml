@@ -6,18 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="bc4aa7e6-afb6-4cd6-8f9e-fbc87764dd2a" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/meal_details.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/meal_details.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/meal_plan_add.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/meal_plan_add.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/meal_product_add.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/meal_product_add.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/meals.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/meals.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/plan_details.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/plan_details.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/plan_meal_add.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/plan_meal_add.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/plan_product_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/plan_product_list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/plans.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/plans.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/products.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/products.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/user_selected_plan.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/user_selected_plan.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web_app/static/js/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/web_app/static/js/script.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/user_favourite_plans.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/user_favourite_plans.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/user_meals.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/user_meals.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web_app/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/web_app/tests.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web_app/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/web_app/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,18 +52,19 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
   }
-}</component>
+}]]></component>
   <component name="RunManager">
     <configuration name="Przemyslane_Zakupy" type="Python.DjangoServer" factoryName="Django server">
       <module name="Przemyslane_Zakupy" />
@@ -107,7 +101,7 @@
       <updated>1656360270247</updated>
       <workItem from="1656360273743" duration="17650000" />
       <workItem from="1656414579891" duration="12534000" />
-      <workItem from="1656435756583" duration="91936000" />
+      <workItem from="1656435756583" duration="98752000" />
     </task>
     <servers />
   </component>
@@ -124,5 +118,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/Przemyslane_Zakupy$Test__web_app_tests.coverage" NAME="Test: web_app/tests Coverage Results" MODIFIED="1657038162108" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/Przemyslane_Zakupy$Test__web_app.coverage" NAME="Test: web_app Coverage Results" MODIFIED="1657038113847" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
   </component>
 </project>

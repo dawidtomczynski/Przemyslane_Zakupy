@@ -3,12 +3,12 @@
 {% block main %}
 <div style="text-align: center">
     {% if user.is_authenticated %}
-        <br><p><a href="/meals/add/"><button type="button" class="btn btn-outline-primary me-2">Dodaj nowe danie</button></a></p><br>
+        <p><a href="/meals/add/"><button type="button" class="btn btn-outline-primary me-2">Dodaj nowe danie</button></a></p>
     {% endif %}
         {% for meal in user_meals %}
             {% load kcal_count %}
-            <li><a href="/meals/{{ meal.id }}">{{ meal.name }}</a>, {{ meal|kcal_count }} kcal / 100g,
+            <p></p><li><a href="/meals/{{ meal.id }}">{{ meal.name }}</a>, {{ meal|kcal_count }} kcal / 100g,
                 waga około: {{ meal|weight_count }} g, koszt: <b>{{ meal|price_count }} zł</b></li>
-        {% endfor %}
+        {% endfor %}<br>
     </div>
 {% endblock %}

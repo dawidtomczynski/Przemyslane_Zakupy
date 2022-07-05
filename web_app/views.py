@@ -4,7 +4,7 @@ from django.contrib.auth.mixins import PermissionRequiredMixin
 from django.contrib.auth.models import User, Group
 from django.core.exceptions import ObjectDoesNotExist
 from django.core.paginator import Paginator
-from django.shortcuts import render, redirect, get_object_or_404, get_list_or_404
+from django.shortcuts import render, redirect, get_object_or_404
 from django.views import View
 from web_app import models as m
 from web_app import forms as f
@@ -40,7 +40,6 @@ class LogoutView(View):
 
 
 class UserCreateView(View):
-
     def get(self, request):
         form = f.UserCreateForm()
         return render(request, 'user_register.html', {'form': form})
@@ -183,7 +182,6 @@ class PlanModifyView(PermissionRequiredMixin, View):
         plan = get_object_or_404(m.Plan, id=plan_id)
         user = request.user
         if user == plan.user:
-            meals_ids = list(plan.meal.values_list('id', flat=True))
             form = f.PlanAddForm(initial={'name': plan.name, 'type': plan.type,
                                           'persons': plan.persons})
             return render(request, 'plan_add.html', {'form': form})
@@ -279,8 +277,6 @@ class PlanMealRandomAdd(PermissionRequiredMixin, View):
         else:
             msg = 'Nie możesz edytować czyjegoś planu.'
             return render(request, 'plan_meal_add.html', {'msg': msg})
-
-
 
 
 class MealListView(View):
@@ -701,6 +697,6 @@ class PlanProductListView(View):
             for product in products:
                 products_list.append(product)
                 cost += product.price
-        products_list.sort(key=products_sort, reverse=True)
+        products_list.sort(key=products_sort)
         return render(request, 'plan_product_list.html', {'plan': plan, 'meals': meals,
                                                           'products': products_list, 'cost': cost})
