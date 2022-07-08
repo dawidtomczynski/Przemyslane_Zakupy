@@ -7,6 +7,9 @@ from django.db import models
 
 
 def get_sentinel_user():
+    """
+    Function used to set products and meals creator as 'deleted' in case of user deletion.
+    """
     return get_user_model().objects.get_or_create(username='deleted')[0]
 
 
@@ -61,6 +64,12 @@ class FavouriteMeal(models.Model):
     meal = models.ManyToManyField(Meal)
 
 
+class MealProduct(models.Model):
+    meal = models.ForeignKey(Meal, on_delete=models.CASCADE)
+    product = models.ForeignKey('Product', on_delete=models.CASCADE)
+    grams = models.IntegerField(default=0)
+
+
 class Product(models.Model):
     name = models.CharField(max_length=64)
     price = models.DecimalField(max_digits=5, decimal_places=2)
@@ -69,12 +78,6 @@ class Product(models.Model):
 
     def __str__(self):
         return self.name
-
-
-class MealProduct(models.Model):
-    meal = models.ForeignKey(Meal, on_delete=models.CASCADE)
-    product = models.ForeignKey(Product, on_delete=models.CASCADE)
-    grams = models.IntegerField(default=0)
 
 
 class ProductType(models.Model):

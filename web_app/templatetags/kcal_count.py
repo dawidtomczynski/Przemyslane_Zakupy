@@ -8,6 +8,9 @@ register = template.Library()
 
 @register.filter(name='kcal_count')
 def kcal_count(arg):
+    """
+    Function used to count average kcal/100g for specified meal.
+    """
     products = m.Product.objects.filter(meal=arg.id)
     total_kcal = []
     for product in products:
@@ -20,6 +23,9 @@ def kcal_count(arg):
 
 @register.filter(name='price_count')
 def price_count(arg):
+    """
+    Function used to count total price of specified meal.
+    """
     products = m.Product.objects.filter(meal=arg.id)
     cost = 0
     for product in products:
@@ -29,6 +35,9 @@ def price_count(arg):
 
 @register.filter(name='weight_count')
 def weight_count(arg):
+    """
+    Function used to count total weight of specified meal.
+    """
     products = m.MealProduct.objects.filter(meal_id=arg.id)
     weight = 0
     for product in products:
@@ -38,6 +47,9 @@ def weight_count(arg):
 
 @register.filter(name='plan_cost')
 def plan_cost(arg):
+    """
+    Function used to count total price of specified plan.
+    """
     cost = 0
     meals = m.PlanMeal.objects.filter(plan_id=arg.id)
     for meal in meals:

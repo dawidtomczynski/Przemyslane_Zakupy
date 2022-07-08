@@ -5,10 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bc4aa7e6-afb6-4cd6-8f9e-fbc87764dd2a" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/Przemyslane_Zakupy.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Przemyslane_Zakupy.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/plan_product_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/plan_product_list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/user_favourite_plans.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/user_favourite_plans.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/user_meals.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/user_meals.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Przemyslane_Zakupy/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/Przemyslane_Zakupy/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/meals.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/meals.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/plan_meal_add.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/plan_meal_add.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/plans.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/plans.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/products.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/products.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web_app/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/web_app/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web_app/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/web_app/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web_app/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/web_app/tests.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web_app/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/web_app/views.py" afterDir="false" />
     </list>
@@ -24,8 +29,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="HTML File" />
-        <option value="Python Script" />
         <option value="JavaScript File" />
+        <option value="Python Script" />
       </list>
     </option>
   </component>
@@ -58,14 +63,20 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/Users/dawid/PycharmProjects/Przemyslane_Zakupy",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
-    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
+    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyIntegratedToolsModulesConfigurable"
   }
 }]]></component>
-  <component name="RunManager">
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\dawid\PycharmProjects\Przemyslane_Zakupy" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Python tests.pytest in tests.py">
     <configuration name="Przemyslane_Zakupy" type="Python.DjangoServer" factoryName="Django server">
       <module name="Przemyslane_Zakupy" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -90,6 +101,100 @@
       <option name="customRunCommand" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="pytest for tests.test_logout_view" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
+      <module name="Przemyslane_Zakupy" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/web_app" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="_new_keywords" value="&quot;&quot;" />
+      <option name="_new_parameters" value="&quot;&quot;" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;tests.test_logout_view&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
+    <configuration name="pytest for tests.test_product_list_view" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
+      <module name="Przemyslane_Zakupy" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/web_app" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="_new_keywords" value="&quot;&quot;" />
+      <option name="_new_parameters" value="&quot;&quot;" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;tests.test_product_list_view&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
+    <configuration name="pytest for tests.test_user_create_view" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
+      <module name="Przemyslane_Zakupy" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/web_app" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="_new_keywords" value="&quot;&quot;" />
+      <option name="_new_parameters" value="&quot;&quot;" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;tests.test_user_create_view&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
+    <configuration name="pytest for tests.test_user_update_password_view" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
+      <module name="Przemyslane_Zakupy" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/web_app" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="_new_keywords" value="&quot;&quot;" />
+      <option name="_new_parameters" value="&quot;&quot;" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;tests.test_user_update_password_view&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
+    <configuration name="pytest in tests.py" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
+      <module name="Przemyslane_Zakupy" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/web_app" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="_new_keywords" value="&quot;&quot;" />
+      <option name="_new_parameters" value="&quot;&quot;" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;$PROJECT_DIR$/web_app/tests.py&quot;" />
+      <option name="_new_targetType" value="&quot;PATH&quot;" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python tests.pytest in tests.py" />
+        <item itemvalue="Python tests.pytest for tests.test_user_update_password_view" />
+        <item itemvalue="Python tests.pytest for tests.test_user_create_view" />
+        <item itemvalue="Python tests.pytest for tests.test_logout_view" />
+        <item itemvalue="Python tests.pytest for tests.test_product_list_view" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -101,7 +206,7 @@
       <updated>1656360270247</updated>
       <workItem from="1656360273743" duration="17650000" />
       <workItem from="1656414579891" duration="12534000" />
-      <workItem from="1656435756583" duration="98752000" />
+      <workItem from="1656435756583" duration="163803000" />
     </task>
     <servers />
   </component>
@@ -120,7 +225,59 @@
     </option>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/Przemyslane_Zakupy$pytest_for_tests_test_with_client.coverage" NAME="pytest for tests.test_with_client Coverage Results" MODIFIED="1657139648582" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/web_app" />
+    <SUITE FILE_PATH="coverage/Przemyslane_Zakupy$pytest_for_tests_test_product_modify_view.coverage" NAME="pytest for tests.test_product_modify_view Coverage Results" MODIFIED="1657287411239" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/web_app" />
+    <SUITE FILE_PATH="coverage/Przemyslane_Zakupy$pytest_for_tests_test_login.coverage" NAME="pytest for tests.test_login Coverage Results" MODIFIED="1657189189051" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/web_app" />
+    <SUITE FILE_PATH="coverage/Przemyslane_Zakupy$pytest_for_tests_test_plan_detail_view.coverage" NAME="pytest for tests.test_plan_detail_view Coverage Results" MODIFIED="1657139864057" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/web_app" />
+    <SUITE FILE_PATH="coverage/Przemyslane_Zakupy$pytest_for_tests_test_meal_modify_view.coverage" NAME="pytest for tests.test_meal_modify_view Coverage Results" MODIFIED="1657281148789" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/web_app" />
+    <SUITE FILE_PATH="coverage/Przemyslane_Zakupy$pytest_for_tests_test_user_favourite_plan_add_view.coverage" NAME="pytest for tests.test_user_favourite_plan_add_view Coverage Results" MODIFIED="1657291301903" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/web_app" />
+    <SUITE FILE_PATH="coverage/Przemyslane_Zakupy$pytest_for_tests_test_user_create.coverage" NAME="pytest for tests.test_user_create Coverage Results" MODIFIED="1657191649381" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/web_app" />
+    <SUITE FILE_PATH="coverage/Przemyslane_Zakupy$pytest_for_tests_test_plan_product_list_view.coverage" NAME="pytest for tests.test_plan_product_list_view Coverage Results" MODIFIED="1657294256595" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/web_app" />
+    <SUITE FILE_PATH="coverage/Przemyslane_Zakupy$pytest_for_tests_test_user_update_view.coverage" NAME="pytest for tests.test_user_update_view Coverage Results" MODIFIED="1657202771735" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/web_app" />
+    <SUITE FILE_PATH="coverage/Przemyslane_Zakupy$pytest_for_tests_test_product_type_delete_view.coverage" NAME="pytest for tests.test_product_type_delete_view Coverage Results" MODIFIED="1657288664179" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/web_app" />
+    <SUITE FILE_PATH="coverage/Przemyslane_Zakupy$pytest_for_tests_test_user_favourite_plan_list_view.coverage" NAME="pytest for tests.test_user_favourite_plan_list_view Coverage Results" MODIFIED="1657290988087" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/web_app" />
+    <SUITE FILE_PATH="coverage/Przemyslane_Zakupy$pytest_for_tests_test_user_favourite_plan_delete_view.coverage" NAME="pytest for tests.test_user_favourite_plan_delete_view Coverage Results" MODIFIED="1657291978993" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/web_app" />
+    <SUITE FILE_PATH="coverage/Przemyslane_Zakupy$pytest_for_tests_test_plan_list_view.coverage" NAME="pytest for tests.test_plan_list_view Coverage Results" MODIFIED="1657298606669" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/web_app" />
+    <SUITE FILE_PATH="coverage/Przemyslane_Zakupy$pytest_for_tests_test_plan_delete_view.coverage" NAME="pytest for tests.test_plan_delete_view Coverage Results" MODIFIED="1657274225069" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/web_app" />
+    <SUITE FILE_PATH="coverage/Przemyslane_Zakupy$pytest_for_tests_test_meal_grams_set_view.coverage" NAME="pytest for tests.test_meal_grams_set_view Coverage Results" MODIFIED="1657283035408" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/web_app" />
+    <SUITE FILE_PATH="coverage/Przemyslane_Zakupy$pytest_for_tests_test_user_favourite_meal_add_view.coverage" NAME="pytest for tests.test_user_favourite_meal_add_view Coverage Results" MODIFIED="1657292232653" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/web_app" />
+    <SUITE FILE_PATH="coverage/Przemyslane_Zakupy$pytest_for_tests_test_logout.coverage" NAME="pytest for tests.test_logout Coverage Results" MODIFIED="1657189314134" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/web_app" />
+    <SUITE FILE_PATH="coverage/Przemyslane_Zakupy$pytest_for_tests_test_user_favourite_meal_delete_view.coverage" NAME="pytest for tests.test_user_favourite_meal_delete_view Coverage Results" MODIFIED="1657292312904" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/web_app" />
+    <SUITE FILE_PATH="coverage/Przemyslane_Zakupy$pytest_for_tests_test_product_type_add_view.coverage" NAME="pytest for tests.test_product_type_add_view Coverage Results" MODIFIED="1657288147821" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/web_app" />
+    <SUITE FILE_PATH="coverage/Przemyslane_Zakupy$pytest_for_tests_test_meal_details_view.coverage" NAME="pytest for tests.test_meal_details_view Coverage Results" MODIFIED="1657287978208" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/web_app" />
+    <SUITE FILE_PATH="coverage/Przemyslane_Zakupy$pytest_for_tests_test_plan_meal_add_view.coverage" NAME="pytest for tests.test_plan_meal_add_view Coverage Results" MODIFIED="1657274111997" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/web_app" />
+    <SUITE FILE_PATH="coverage/Przemyslane_Zakupy$pytest_for_tests_test_user_selected_plan_view.coverage" NAME="pytest for tests.test_user_selected_plan_view Coverage Results" MODIFIED="1657293632809" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/web_app" />
     <SUITE FILE_PATH="coverage/Przemyslane_Zakupy$Test__web_app_tests.coverage" NAME="Test: web_app/tests Coverage Results" MODIFIED="1657038162108" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/Przemyslane_Zakupy$pytest_for_tests_test_user_meal_list_view.coverage" NAME="pytest for tests.test_user_meal_list_view Coverage Results" MODIFIED="1657292063452" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/web_app" />
+    <SUITE FILE_PATH="coverage/Przemyslane_Zakupy$pytest_for_tests_test_meal_product_add_view.coverage" NAME="pytest for tests.test_meal_product_add_view Coverage Results" MODIFIED="1657281774078" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/web_app" />
+    <SUITE FILE_PATH="coverage/Przemyslane_Zakupy$pytest_in_tests_py.coverage" NAME="pytest in tests.py Coverage Results" MODIFIED="1657299970021" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/web_app" />
+    <SUITE FILE_PATH="coverage/Przemyslane_Zakupy$pytest_for_tests_test_user_delete.coverage" NAME="pytest for tests.test_user_delete Coverage Results" MODIFIED="1657194998415" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/web_app" />
+    <SUITE FILE_PATH="coverage/Przemyslane_Zakupy$pytest_for_tests_test_user_delete_view.coverage" NAME="pytest for tests.test_user_delete_view Coverage Results" MODIFIED="1657204318747" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/web_app" />
+    <SUITE FILE_PATH="coverage/Przemyslane_Zakupy$pytest_for_tests_test_plan_list.coverage" NAME="pytest for tests.test_plan_list Coverage Results" MODIFIED="1657195374587" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/web_app" />
+    <SUITE FILE_PATH="coverage/Przemyslane_Zakupy$pytest_for_tests_test_meal_list_view.coverage" NAME="pytest for tests.test_meal_list_view Coverage Results" MODIFIED="1657298684760" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/web_app" />
+    <SUITE FILE_PATH="coverage/Przemyslane_Zakupy$pytest_for_tests_test_product_type_list_view.coverage" NAME="pytest for tests.test_product_type_list_view Coverage Results" MODIFIED="1657287863020" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/web_app" />
+    <SUITE FILE_PATH="coverage/Przemyslane_Zakupy$pytest_for_tests_test_meal_add_view.coverage" NAME="pytest for tests.test_meal_add_view Coverage Results" MODIFIED="1657281054332" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/web_app" />
+    <SUITE FILE_PATH="coverage/Przemyslane_Zakupy$pytest_for_tests_test_user_selected_plan_add_view.coverage" NAME="pytest for tests.test_user_selected_plan_add_view Coverage Results" MODIFIED="1657293752113" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/web_app" />
+    <SUITE FILE_PATH="coverage/Przemyslane_Zakupy$pytest_for_tests_test_product_add_view.coverage" NAME="pytest for tests.test_product_add_view Coverage Results" MODIFIED="1657287311894" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/web_app" />
+    <SUITE FILE_PATH="coverage/Przemyslane_Zakupy$pytest_for_tests_test_user_update.coverage" NAME="pytest for tests.test_user_update Coverage Results" MODIFIED="1657193398267" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/web_app" />
+    <SUITE FILE_PATH="coverage/Przemyslane_Zakupy$pytest_for_tests_test_product_delete_view.coverage" NAME="pytest for tests.test_product_delete_view Coverage Results" MODIFIED="1657287498817" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/web_app" />
+    <SUITE FILE_PATH="coverage/Przemyslane_Zakupy$pytest_for_tests_test_meal_delete_view.coverage" NAME="pytest for tests.test_meal_delete_view Coverage Results" MODIFIED="1657281529720" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/web_app" />
+    <SUITE FILE_PATH="coverage/Przemyslane_Zakupy$pytest_for_tests_test_product_details_view.coverage" NAME="pytest for tests.test_product_details_view Coverage Results" MODIFIED="1657283382755" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/web_app" />
+    <SUITE FILE_PATH="coverage/Przemyslane_Zakupy$pytest_for_tests_test_user_plan_list_view.coverage" NAME="pytest for tests.test_user_plan_list_view Coverage Results" MODIFIED="1657289807695" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/web_app" />
+    <SUITE FILE_PATH="coverage/Przemyslane_Zakupy$pytest_for_tests_test_plan_add_view.coverage" NAME="pytest for tests.test_plan_add_view Coverage Results" MODIFIED="1657202386710" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/web_app" />
+    <SUITE FILE_PATH="coverage/Przemyslane_Zakupy$pytest_for_tests_test_login_view.coverage" NAME="pytest for tests.test_login_view Coverage Results" MODIFIED="1657203448534" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/web_app" />
     <SUITE FILE_PATH="coverage/Przemyslane_Zakupy$Test__web_app.coverage" NAME="Test: web_app Coverage Results" MODIFIED="1657038113847" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/Przemyslane_Zakupy$pytest_for_tests_test_plan_create_view.coverage" NAME="pytest for tests.test_plan_create_view Coverage Results" MODIFIED="1657193386552" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/web_app" />
+    <SUITE FILE_PATH="coverage/Przemyslane_Zakupy$pytest_for_tests_test_product_type_modify_view.coverage" NAME="pytest for tests.test_product_type_modify_view Coverage Results" MODIFIED="1657288359157" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/web_app" />
+    <SUITE FILE_PATH="coverage/Przemyslane_Zakupy$pytest_for_tests_test_plan_meal_random_add_view.coverage" NAME="pytest for tests.test_plan_meal_random_add_view Coverage Results" MODIFIED="1657275166559" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/web_app" />
+    <SUITE FILE_PATH="coverage/Przemyslane_Zakupy$pytest_for_tests_test_meal_plan_add_view.coverage" NAME="pytest for tests.test_meal_plan_add_view Coverage Results" MODIFIED="1657281640990" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/web_app" />
+    <SUITE FILE_PATH="coverage/Przemyslane_Zakupy$pytest_for_tests_test_user_update_password.coverage" NAME="pytest for tests.test_user_update_password Coverage Results" MODIFIED="1657194944544" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/web_app" />
+    <SUITE FILE_PATH="coverage/Przemyslane_Zakupy$pytest_for_tests_test_plan_modify_view.coverage" NAME="pytest for tests.test_plan_modify_view Coverage Results" MODIFIED="1657205025268" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/web_app" />
+    <SUITE FILE_PATH="coverage/Przemyslane_Zakupy$pytest_for_tests_test_plan_details_view.coverage" NAME="pytest for tests.test_plan_details_view Coverage Results" MODIFIED="1657288042399" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/web_app" />
+    <SUITE FILE_PATH="coverage/Przemyslane_Zakupy$pytest_for_tests_test_user_create_view.coverage" NAME="pytest for tests.test_user_create_view Coverage Results" MODIFIED="1657299398399" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/web_app" />
+    <SUITE FILE_PATH="coverage/Przemyslane_Zakupy$pytest_for_tests_test_logout_view.coverage" NAME="pytest for tests.test_logout_view Coverage Results" MODIFIED="1657298922187" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/web_app" />
+    <SUITE FILE_PATH="coverage/Przemyslane_Zakupy$pytest_for_tests_test_user_favourite_meal_list_view.coverage" NAME="pytest for tests.test_user_favourite_meal_list_view Coverage Results" MODIFIED="1657292152848" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/web_app" />
+    <SUITE FILE_PATH="coverage/Przemyslane_Zakupy$pytest_for_tests_test_product_list_view.coverage" NAME="pytest for tests.test_product_list_view Coverage Results" MODIFIED="1657298750521" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/web_app" />
+    <SUITE FILE_PATH="coverage/Przemyslane_Zakupy$pytest_for_tests_test_user_update_password_view.coverage" NAME="pytest for tests.test_user_update_password_view Coverage Results" MODIFIED="1657299822991" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/web_app" />
   </component>
 </project>

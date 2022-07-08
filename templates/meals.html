@@ -65,19 +65,4 @@
             waga około: {{ meal|weight_count }} g, koszt: <b>{{ meal|price_count }} zł</b></li>
         {% endfor %}
     </div><br>
-    <div style="text-align:center">
-    <span>
-        {% if meals.has_previous %}
-            <a href="?page={{ meals.previous_page_number }}">< poprzednia</a>
-        {% endif %}
-        <span>
-                {% for page_number in meals.paginator.page_range %}
-                    | <a href="/meals/?page={{ page_number }}">{{ page_number }}</a>
-                {% endfor %} |
-        </span>
-        {% if meals.has_next %}
-            <a href="?page={{ meals.next_page_number }}">następna ></a>
-        {% endif %}
-        </span>
-    </div>
 {% endblock %}

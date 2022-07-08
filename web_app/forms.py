@@ -30,6 +30,7 @@ class UserCreateForm(f.Form):
         password2 = cleaned_data.get('password2')
         if password != password2:
             raise ValidationError('Podane hasła nie są jednakowe')
+        return cleaned_data
 
     def clean_username(self):
         username = self.cleaned_data.get('username')

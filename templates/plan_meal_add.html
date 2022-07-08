@@ -4,7 +4,9 @@
     <div style="text-align: center">
     {% if not msg %}
         <h4>Dodaj dania do planu: {{ plan.name }}</h4><br>
-        <a href="/plans/add-meal-random/{{ plan.id }}"><button>Dodaj losowe danie</button></a>
+        {% if meals.count != 0 %}
+            <a href="/plans/add-meal-random/{{ plan.id }}"><button>Dodaj losowe danie</button></a>
+        {% endif %}
         <form method="post">
             <br><input type="submit" value="Zapisz">
             <br><br><p><b>Wybrane dania:</b></p>

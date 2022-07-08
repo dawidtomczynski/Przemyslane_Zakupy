@@ -71,19 +71,4 @@
         {% endfor %}
     </div>
     </div><br>
-    <div style="text-align:center">
-    <span>
-        {% if plans.has_previous %}
-            <a href="?page={{ plans.previous_page_number }}">< poprzednia</a>
-        {% endif %}
-        <span>
-                {% for page_number in plans.paginator.page_range %}
-                    | <a href="/plans/?page={{ page_number }}">{{ page_number }}</a>
-                {% endfor %} |
-        </span>
-        {% if plans.has_next %}
-            <a href="?page={{ plans.next_page_number }}">następna ></a>
-        {% endif %}
-        </span>
-    </div>
 {% endblock %}
