@@ -128,5 +128,5 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
-/Przemyslane_Zakupy/settings.py
+/Przemyslane_Zakupy/local_settings.py
 /web_app/migrations

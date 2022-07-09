@@ -703,10 +703,12 @@ class ProductDeleteView(PermissionRequiredMixin, View):
         return redirect('product_details', product_id=product_id)
 
 
-class ProductTypeListView(View):
+class ProductTypeListView(PermissionRequiredMixin, View):
     """
     Shows all product types on screen, only for admin.
     """
+    permission_required = 'web_app.view_producttype'
+
     def get(self, request):
         """
         Shows all product types as list.
