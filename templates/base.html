@@ -27,7 +27,7 @@
       {% else %}
         <div class="dropdown text-end">
           <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-            <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
+            <img src="{% static '98681.jpg' %}" alt="mdo" width="32" height="32" class="rounded-circle">
           </a>
           <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1" style="">
               <li style="text-align: center"><b>{{ user.username }}</b></li>
@@ -101,8 +101,17 @@
       <span class="visually-hidden">Next</span>
     </button>
   </div>
-        {% endblock %}
-    </main>
+    {% endblock %}
+     </main>
+{#    {% block description %}#}
+{#    <div style="text-align: center">#}
+{#        <br><br><br><p><b>Przemyślane Zakupy</b> pozwala na oszczędność Twojego czasu i pieniędzy. Już nie musisz codziennie<br>#}
+{#            zastanawiać się, co dzisiaj przyrządzić na obiad - aplikacja zrobi to za Ciebie! Mało tego - nie tylko<br>#}
+{#            na jeden czy dwa dni, a na cały tydzień! Pomoże przygotować Ci zbilansowany plan dietetyczny dostosowany<br>#}
+{#            do Twoich potrzeb, a także portfela. Dzięki temu zakupy można zrobić raz a porządnie, ograniczając przy<br>#}
+{#            tym marnotrawstwo jedzenia.</p>#}
+{#    </div>#}
+{#    {% endblock %}#}
     <footer class="footer mt-auto py-3 bg-light" style="margin-top: auto">
         <p class="float-end"><a href="#"><button type="button" class="btn btn-primary me-2">Na górę strony</button></a></p>
   <div class="container">

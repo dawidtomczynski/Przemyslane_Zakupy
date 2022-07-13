@@ -8,20 +8,29 @@
             <br><input type="submit" value="Zapisz">
             <br><br><p><b>Wybrane produkty:</b></p>
             {% for product in chosen_products %}
-                <p><input type="checkbox" name="product" value="{{ product.id }}" checked>&ensp;<a href="/products/{{ product.id }}">
-                    {{ product.name }}</a>, cena: <b>{{ product.price }} zł</b></p>
+                <p><input type="checkbox" name="product" value="{{ product.id }}" checked>&ensp;
+                    <a href="/products/{{ product.id }}">{{ product.name }}</a>, cena: <b>{{ product.price }} zł</b></p>
             {% endfor %}<br>
             <p><b>Inne produkty:</b></p>
-            <p><input type="text" id="myInput" onkeyup="searchFunctionPars()" placeholder="Wyszukaj..."></p>
+            <p><input type="text" id="myInput" onkeyup="searchFunctionPars()" placeholder="Wyszukaj...">
+            <select id="chosenProductType">
+            <option disabled selected>Kategorie:</option>
+            {% for product_type in product_types %}
+                <option value="{{ product_type.id }}">{{ product_type }}</option>
+            {% endfor %}
+        </select></p>
             <div id="myUL">
             {% for product in products %}
-                <p><input type="checkbox" name="product" value="{{ product.id }}">&ensp;
+                <p id="product" type_id="{{ product.type.id }}"><input type="checkbox" name="product" value="{{ product.id }}">&ensp;
                 <a href="/products/{{ product.id }}">{{ product.name }}</a>, cena: <b>{{ product.price }} zł</b><br></p>
-            {% endfor %}<br>
+            {% endfor %}
+            </div><br>
             {% csrf_token %}
         </form>
     {% else %}
         <h4>{{ msg }}</h4>
     {% endif %}
     </div>
+    {% load static %}
+    <script type="text/javascript" src="{% static 'js/product_type.js' %}"></script>
 {% endblock %}

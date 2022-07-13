@@ -1,5 +1,5 @@
 function searchFunction() {
-  var input, filter, ul, li, a, i, txtValue;
+  let input, filter, ul, li, a, i, txtValue;
   input = document.getElementById('myInput');
   filter = input.value.toUpperCase();
   ul = document.getElementById("myUL");
@@ -17,19 +17,20 @@ function searchFunction() {
 }
 
 function searchFunctionPars() {
-  var input, filter, ul, li, a, i, txtValue;
+  let input, filter, ul, p, a, i, txtValue;
   input = document.getElementById('myInput');
   filter = input.value.toUpperCase();
   ul = document.getElementById("myUL");
-  li = ul.getElementsByTagName('p');
+  p = ul.getElementsByTagName('p');
 
-  for (i = 0; i < li.length; i++) {
-    a = li[i].getElementsByTagName("a")[0];
+  for (i = 0; i < p.length; i++) {
+    a = p[i].getElementsByTagName("a")[0];
     txtValue = a.textContent || a.innerText;
     if (txtValue.toUpperCase().indexOf(filter) > -1) {
-      li[i].style.display = "";
+      p[i].style.display = "block";
     } else {
-      li[i].style.display = "none";
+      p[i].style.display = "none";
     }
   }
 }
+

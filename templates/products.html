@@ -6,11 +6,20 @@
             <p><a href="/products/add/"><button type="button" class="btn btn-outline-primary me-2">Dodaj nowy produkt</button></a>
                 <a href="/products/types/"><button type="button" class="btn btn-outline-primary me-2">Typy produktów</button></a></p>
         {% endif %}
-        <p><input type="text" id="myInput" onkeyup="searchFunction()" placeholder="Wyszukaj..."></p>
+        <p><input type="text" id="myInput" onkeyup="searchFunction()" placeholder="Wyszukaj...">
+        <select id="chosenProductType">
+            <option disabled selected>Kategorie:</option>
+            {% for product_type in product_types %}
+                <option value="{{ product_type.id }}">{{ product_type }}</option>
+            {% endfor %}
+        </select></p>
     <div id="myUL">
         {% for product in products %}
-            <p><li><a href="/products/{{ product.id }}">{{ product.name }}</a>, {{ product.price }} zł</li>
+            <p><li id="product" type_id="{{ product.type.id }}">
+            <a href="/products/{{ product.id }}">{{ product.name }}</a>, {{ product.price }} zł</li>
         {% endfor %}
     </div>
     </div><br>
+    {% load static %}
+    <script type="text/javascript" src="{% static 'js/product_type.js' %}"></script>
 {% endblock %}

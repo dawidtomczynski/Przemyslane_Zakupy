@@ -58,10 +58,16 @@
     {% if user.is_authenticated %}
         <p><a href="/plans/add/"><button type="button" class="btn btn-outline-primary me-2">Dodaj nowy plan</button></a></p>
     {% endif %}
-        <p><input type="text" id="myInput" onkeyup="searchFunction()" placeholder="Wyszukaj..."></p>
+        <p><input type="text" id="myInput" onkeyup="searchFunction()" placeholder="Wyszukaj...">
+        <select id="chosenPlanType">
+            <option disabled selected>Typy planów:</option>
+            <option value="1">Mięsne</option>
+            <option value="2">Wegetariańskie</option>
+            <option value="3">Wegańskie</option>
+        </select></p>
     <div id="myUL">
         {% for plan in plans %}
-            <p><li><a href="/plans/{{ plan.id }}">{{ plan.name }}</a>,
+            <p><li id="plan" type_id="{{ plan.type }}"><a href="/plans/{{ plan.id }}">{{ plan.name }}</a>,
             {% if plan.persons == 1 %}
                 dla {{ plan.persons }} osoby,
             {% else %}
@@ -71,4 +77,6 @@
         {% endfor %}
     </div>
     </div><br>
+    {% load static %}
+        <script type="text/javascript" src="{% static 'js/plan_type.js'%}"></script>
 {% endblock %}

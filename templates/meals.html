@@ -58,11 +58,19 @@
     {% if user.is_authenticated %}
         <p><a href="/meals/add/"><button type="button" class="btn btn-outline-primary me-2">Dodaj nowe danie</button></a></p>
     {% endif %}
-        <p><input type="text" id="myInput" onkeyup="searchFunction()" placeholder="Wyszukaj..."></p>
+        <p><input type="text" id="myInput" onkeyup="searchFunction()" placeholder="Wyszukaj...">
+        <select id="chosenMealType">
+            <option disabled selected>Typy dań:</option>
+            <option value="1">Mięsne</option>
+            <option value="2">Wegetariańskie</option>
+            <option value="3">Wegańskie</option>
+        </select></p>
     <div id="myUL">
         {% for meal in meals %}
-            <p><li><a href="/meals/{{ meal.id }}">{{ meal.name }}</a>, {{ meal|kcal_count }} kcal / 100g,
+            <p><li id="meal" type_id="{{ meal.type }}"><a href="/meals/{{ meal.id }}">{{ meal.name }}</a>, {{ meal|kcal_count }} kcal / 100g,
             waga około: {{ meal|weight_count }} g, koszt: <b>{{ meal|price_count }} zł</b></li>
         {% endfor %}
     </div><br>
+    {% load static %}
+        <script type="text/javascript" src="{% static 'js/meal_type.js'%}"></script>
 {% endblock %}

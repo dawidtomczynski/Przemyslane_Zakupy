@@ -561,8 +561,10 @@ class MealProductAddView(PermissionRequiredMixin, View):
         if meal.user == user:
             chosen_products = m.Product.objects.filter(meal=meal_id)
             products = m.Product.objects.exclude(meal=meal_id)
+            product_types = m.ProductType.objects.all()
             return render(request, 'meal_product_add.html', {'meal': meal, 'products': products,
-                                                             'chosen_products': chosen_products})
+                                                             'chosen_products': chosen_products,
+                                                             'product_types': product_types})
         else:
             msg = 'Nie możesz edytować czyjegoś dania.'
             return render(request, 'meal_product_add.html', {'msg': msg})
@@ -613,7 +615,8 @@ class ProductListView(View):
         Shows all products as list with price of each product.
         """
         products = m.Product.objects.all().order_by('type')
-        return render(request, 'products.html', {'products': products})
+        product_types = m.ProductType.objects.all()
+        return render(request, 'products.html', {'products': products, 'product_types': product_types})
 
 
 class ProductDetailsView(View):

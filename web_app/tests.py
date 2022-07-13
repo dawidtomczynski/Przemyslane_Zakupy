@@ -1,7 +1,5 @@
 import pytest
-from django.contrib.auth import authenticate
 from django.contrib.auth.models import User, Permission, Group
-from django.http import request
 from django.urls import reverse
 from web_app import models as m
 
@@ -159,8 +157,8 @@ def test_logout_view(client, user):
     client.force_login(user)
     url = reverse('user_logout')
     response = client.get(url)
-    assert response.status_code in (200, 302)
-    # assert user.is_authenticated
+    assert response.status_code == 302
+    # assert response.context['user'].is_authenticated
 
 
 @pytest.mark.django_db
@@ -494,7 +492,8 @@ def test_product_delete_view(client, superuser, product):
 
 
 @pytest.mark.django_db
-def test_product_type_list_view(client, producttypes):
+def test_product_type_list_view(client, superuser, producttypes):
+    client.force_login(superuser)
     url = reverse('product_types')
     get_response = client.get(url)
     product_types = m.ProductType.objects.all()

@@ -5,9 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bc4aa7e6-afb6-4cd6-8f9e-fbc87764dd2a" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web_app/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/web_app/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Przemyslane_Zakupy/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/Przemyslane_Zakupy/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/meal_product_add.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/meal_product_add.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/meals.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/meals.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/plan_product_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/plan_product_list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/plans.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/plans.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/products.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/products.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web_app/static/js/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/web_app/static/js/script.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web_app/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/web_app/tests.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web_app/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/web_app/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -22,8 +29,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="HTML File" />
-        <option value="JavaScript File" />
         <option value="Python Script" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -50,20 +57,20 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "DefaultHtmlFileTemplate": "HTML File",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/dawid/PycharmProjects/Przemyslane_Zakupy/Przemyslane_Zakupy",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyIntegratedToolsModulesConfigurable"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/dawid/PycharmProjects/Przemyslane_Zakupy/Przemyslane_Zakupy&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\dawid\PycharmProjects\Przemyslane_Zakupy\Przemyslane_Zakupy" />
@@ -184,8 +191,8 @@
       <list>
         <item itemvalue="Python tests.pytest in tests.py" />
         <item itemvalue="Python tests.pytest for tests.test_user_update_password_view" />
-        <item itemvalue="Python tests.pytest for tests.test_user_create_view" />
         <item itemvalue="Python tests.pytest for tests.test_logout_view" />
+        <item itemvalue="Python tests.pytest for tests.test_user_create_view" />
         <item itemvalue="Python tests.pytest for tests.test_product_list_view" />
       </list>
     </recent_temporary>
@@ -200,7 +207,8 @@
       <updated>1656360270247</updated>
       <workItem from="1656360273743" duration="17650000" />
       <workItem from="1656414579891" duration="12534000" />
-      <workItem from="1656435756583" duration="166666000" />
+      <workItem from="1656435756583" duration="172623000" />
+      <workItem from="1657617377622" duration="12977000" />
     </task>
     <servers />
   </component>
@@ -217,6 +225,27 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/web_app/views.py</url>
+          <line>142</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/web_app/tests.py</url>
+          <line>203</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$USER_HOME$/AppData/Local/Programs/Python/Python310/Lib/site-packages/django/contrib/auth/hashers.py</url>
+          <line>43</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Przemyslane_Zakupy$pytest_for_tests_test_with_client.coverage" NAME="pytest for tests.test_with_client Coverage Results" MODIFIED="1657139648582" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/web_app" />
@@ -244,7 +273,7 @@
     <SUITE FILE_PATH="coverage/Przemyslane_Zakupy$Test__web_app_tests.coverage" NAME="Test: web_app/tests Coverage Results" MODIFIED="1657038162108" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/Przemyslane_Zakupy$pytest_for_tests_test_user_meal_list_view.coverage" NAME="pytest for tests.test_user_meal_list_view Coverage Results" MODIFIED="1657292063452" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/web_app" />
     <SUITE FILE_PATH="coverage/Przemyslane_Zakupy$pytest_for_tests_test_meal_product_add_view.coverage" NAME="pytest for tests.test_meal_product_add_view Coverage Results" MODIFIED="1657281774078" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/web_app" />
-    <SUITE FILE_PATH="coverage/Przemyslane_Zakupy$pytest_in_tests_py.coverage" NAME="pytest in tests.py Coverage Results" MODIFIED="1657299970021" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/web_app" />
+    <SUITE FILE_PATH="coverage/Przemyslane_Zakupy$pytest_in_tests_py.coverage" NAME="pytest in tests.py Coverage Results" MODIFIED="1657546873884" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/web_app" />
     <SUITE FILE_PATH="coverage/Przemyslane_Zakupy$pytest_for_tests_test_user_delete.coverage" NAME="pytest for tests.test_user_delete Coverage Results" MODIFIED="1657194998415" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/web_app" />
     <SUITE FILE_PATH="coverage/Przemyslane_Zakupy$pytest_for_tests_test_user_delete_view.coverage" NAME="pytest for tests.test_user_delete_view Coverage Results" MODIFIED="1657204318747" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/web_app" />
     <SUITE FILE_PATH="coverage/Przemyslane_Zakupy$pytest_for_tests_test_plan_list.coverage" NAME="pytest for tests.test_plan_list Coverage Results" MODIFIED="1657195374587" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/web_app" />
@@ -269,9 +298,9 @@
     <SUITE FILE_PATH="coverage/Przemyslane_Zakupy$pytest_for_tests_test_plan_modify_view.coverage" NAME="pytest for tests.test_plan_modify_view Coverage Results" MODIFIED="1657205025268" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/web_app" />
     <SUITE FILE_PATH="coverage/Przemyslane_Zakupy$pytest_for_tests_test_plan_details_view.coverage" NAME="pytest for tests.test_plan_details_view Coverage Results" MODIFIED="1657288042399" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/web_app" />
     <SUITE FILE_PATH="coverage/Przemyslane_Zakupy$pytest_for_tests_test_user_create_view.coverage" NAME="pytest for tests.test_user_create_view Coverage Results" MODIFIED="1657299398399" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/web_app" />
-    <SUITE FILE_PATH="coverage/Przemyslane_Zakupy$pytest_for_tests_test_logout_view.coverage" NAME="pytest for tests.test_logout_view Coverage Results" MODIFIED="1657298922187" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/web_app" />
+    <SUITE FILE_PATH="coverage/Przemyslane_Zakupy$pytest_for_tests_test_logout_view.coverage" NAME="pytest for tests.test_logout_view Coverage Results" MODIFIED="1657355091829" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/web_app" />
     <SUITE FILE_PATH="coverage/Przemyslane_Zakupy$pytest_for_tests_test_user_favourite_meal_list_view.coverage" NAME="pytest for tests.test_user_favourite_meal_list_view Coverage Results" MODIFIED="1657292152848" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/web_app" />
     <SUITE FILE_PATH="coverage/Przemyslane_Zakupy$pytest_for_tests_test_product_list_view.coverage" NAME="pytest for tests.test_product_list_view Coverage Results" MODIFIED="1657298750521" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/web_app" />
-    <SUITE FILE_PATH="coverage/Przemyslane_Zakupy$pytest_for_tests_test_user_update_password_view.coverage" NAME="pytest for tests.test_user_update_password_view Coverage Results" MODIFIED="1657299822991" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/web_app" />
+    <SUITE FILE_PATH="coverage/Przemyslane_Zakupy$pytest_for_tests_test_user_update_password_view.coverage" NAME="pytest for tests.test_user_update_password_view Coverage Results" MODIFIED="1657355450809" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/web_app" />
   </component>
 </project>
